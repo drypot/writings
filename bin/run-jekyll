@@ -1,0 +1,4 @@
+(
+cd docs
+bundler exec jekyll serve
+)

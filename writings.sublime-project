@@ -1,0 +1,25 @@
+{
+  "folders":
+  [
+    {
+      "path": ".",
+      "folder_exclude_patterns":
+      [
+        "*"
+      ],
+      "follow_symlinks": true,
+    },
+    {
+      "path": "bin",
+      "follow_symlinks": true,
+    },
+    {
+      "path": "docs",
+      "follow_symlinks": true,
+      "folder_exclude_patterns":
+      [
+        "_site"
+      ],
+    },
+  ]
+}

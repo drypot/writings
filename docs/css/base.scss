@@ -55,6 +55,29 @@ body {
   color: $color;
 }
 
+h2 {
+  font-size: 1.8em;
+  margin: 1.5em 0em 0.7em;
+}
+
+h3 {
+  font-size: 1.4em;
+  margin: 1.5em 0em 0.8em;
+}
+
+p {
+  margin: 0em 0em 0.8em;
+}
+
+pre {
+  font-size: 0.8em;
+  margin: 0em 8px 1.3em;
+}
+
+h2, h3, p {
+  padding: 0px 8px 0px;
+}
+
 @mixin section {
   max-width: $width;
   margin: $margin * 1.5 auto; // auto 는 IE9 이상부터
@@ -109,41 +132,6 @@ hr {
   margin: 0px;
 }
 
-// error
-
-.error-report {
-  text-align: left;
-  font-family: monospace;
-  font-size: 80%;
-  background-color: white;
-  white-space: pre;
-}
-
-.modal-body {
-  white-space: pre;
-  overflow: scroll;
-}
-
-// form
-
-form.main {
-  max-width: $form-width;
-  margin: 0 auto;
-  padding: 0em 1em;
-  input[type=file] {
-    width: 100%;
-  }
-  textarea {
-    //font-family: monospace;
-  }
-}
-
-pre.sample {
-  max-width: $form-width;
-  margin: 0 auto;
-  text-align: left;
-}
-
 // home
 
 .page-header { // bootstrap 에 같은 이름 클래스가 정의되어 있다;
@@ -165,18 +153,15 @@ pre.sample {
       margin: 0px;
       li {
         padding: 0 5px;
+        padding: 0 5px;
       }
     }
-  }
-  .sponsor {
-    margin: 0.6em auto;
-    font-size: 1.1em;
   }
 }
 
 .page-header-site-name {
   margin: 0.6em auto;
-  font-size: 1.3em;
+  font-size: 1.5em;
   a:hover {
     text-decoration: none;
   }
@@ -200,57 +185,25 @@ pre.sample {
   }
 }
 
-.news {
-}
-
 // page content
 
 .page-content {
-
-}
-
-// category
-
-.depth1 {
-  @include section;
-  ul {
-    padding: 0em;
-    li {
-      display: inline;
-      word-break: keep-all;
-      margin: 0em 0.3em;
-    }
-    li.name {
-      font-weight: bold; 
-    }
-    li.name::after { 
-      content: ":";
-    }
-  }   
-}
-
-.depth2 {
-  @include section;
-  .depth3 {
-    @include sub-section;
-    .name {
-      font-size: 1.3em;
-      font-weight: bold; 
-      margin-bottom: 1em;
-    }
-    ul {
-      margin-bottom: 1.5em;
-      padding: 0em;
-      list-style: none;
-      li {
-        margin-bottom: 0.3em;
-      }
-    }
+  text-align: left;
+  p.go-to-index {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 4em 0em;
   }
 }
 
-// profile
-
-#profile-text {
-  white-space: pre-line;
+.page-content-index {
+  text-align: center;
+  ul {
+    list-style: none;
+    margin: 0em 0.5em 3em;
+    padding-left: 0px;
+    li {
+      margin-bottom: 1.8em;
+    }
+  }
 }

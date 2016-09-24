@@ -1,4 +1,6 @@
-# MVC Model Parameter BestPractice
+---
+title: MVC Model Parameter BestPractice
+---
 
 2010-11-04
 
@@ -29,21 +31,21 @@ Spring MVC 2.X 대에서 주로 쓰던 방식이니 직접 사용하지 않으�
 
 장황해 지겠지만 이부분을 좀 길게 적으면,
 
-	void method() {
-		Apple apple = new apple();
-		Banana banana = new Banana();
-		// code using apple and banana 
-	}
+    void method() {
+      Apple apple = new apple();
+      Banana banana = new Banana();
+      // code using apple and banana 
+    }
 
 이런 식으로 하지 마시고,
 
-	void method(Apple apple, Banana banana) {
-		// code using apple and banana
-	}
+    void method(Apple apple, Banana banana) {
+      // code using apple and banana
+    }
 
 이런 식으로 하신 후, 콜하는 부분에서 오브젝트를 만들어 던지란 말이지요.
 
-	method(new Apple(), new Banana);
+   method(new Apple(), new Banana);
 
 이 스타일을 컨트롤러에 가져오면
 Model 오브젝트도 컨트롤러 핸들러 메서드에서 만들어 쓰는게 아니고 받는 것이 좋다는 말입니다.
@@ -52,12 +54,12 @@ Model 오브젝트도 컨트롤러 핸들러 메서드에서 만들어 쓰는게
 
 새글쓰기 메서드 경우를 예로 보면.
 
-	@RequestMapping(value = "/post/new", method = RequestMethod.GET)
-	public String newPost(PostParams postParams, Model model, HttpServletRequest request) {
-		PostForm postForm = new PostForm();
-		model.addAttribute(postForm);
-		return "post/new";
-	}
+    @RequestMapping(value = "/post/new", method = RequestMethod.GET)
+    public String newPost(PostParams postParams, Model model, HttpServletRequest request) {
+      PostForm postForm = new PostForm();
+      model.addAttribute(postForm);
+      return "post/new";
+    }
 
 새로 생성한 빈 postForm 오브젝트를 뷰로 던지기 위해 model 오브젝트를 통하게 되는데
 이것을 인자로 스프링으로 부터 주입받고 있습니다.
@@ -69,10 +71,10 @@ M 으로 시작하는 4 인방을 다루는 방법중에 가장 괜찬은 정석
 가능하고요, 위에서 PostForm 을 생성하고 이걸 또 Model 에 넣는 구분이 싹 필요없어집니다.
 이렇게.
 
-	@RequestMapping(value = "/post/new", method = RequestMethod.GET)
-	public String newPost(PostParams postParams, PostForm postForm, HttpServletRequest request) {
-		return "post/new";
-	}
+    @RequestMapping(value = "/post/new", method = RequestMethod.GET)
+    public String newPost(PostParams postParams, PostForm postForm, HttpServletRequest request) {
+      return "post/new";
+    }
 
 보시면 PostForm 을 바로 주입받고 있습니다.
 스프링은 인자로 정의된 오브젝트를 일단 다 만들고 보니 빈 오브젝트가 낑겨 있을 겁니다.
@@ -81,3 +83,7 @@ M 으로 시작하는 4 인방을 다루는 방법중에 가장 괜찬은 정석
 
 그러니 결론은 사실 저위에 M 4 인방은 전부 우리 눈에 띄일 필요가 없는 놈이었습니다.
 만들고 계신 코드에 M... 이 보이면 수정해서 더 간단히 하실 수 있습니다.
+
+
+{:class="go-to-index"}
+[Java Spring](index)

@@ -1,4 +1,6 @@
-# Hibernate, TopLink, JPA
+---
+title: Hibernate, TopLink, JPA
+---
 
 2010-09-11
 
@@ -35,3 +37,7 @@ JVM 에 에이전트는 하나만 붙일 수 있습니다.
 
 현재는 EclipseLink 사용자보다 Hibernate 사용자가 훨씬 많습니다.
 EclipseLink 도큐먼트는 방대하고 잘 정리되어 있으나 현재는 원서밖에 없는 문제도 있습니다.
+
+
+{:class="go-to-index"}
+[Java Hibernate](index)

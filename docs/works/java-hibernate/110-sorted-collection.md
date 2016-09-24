@@ -1,4 +1,6 @@
-# Sorted Collection
+---
+title: Sorted Collection
+---
 
 2010-09-30
 
@@ -8,13 +10,17 @@ JPA @OrderColumn 이라고 있는데 이것도 좀 거시기하고, desc 도 없
 
 하이버네이트 확장 기능 찾아봤더니 좀 쓸만한 어노테이션이 나옵니다.
 
-	@ElementCollection
-	@CollectionTable(name = "nick_name", joinColumns = @JoinColumn(name = "account_id"))
-	@Column(name = "nick_name")
-	@OrderBy(clause = "nick_name desc")
-	private List<String> nickNames = new ArrayList<String>();
+    @ElementCollection
+    @CollectionTable(name = "nick_name", joinColumns = @JoinColumn(name = "account_id"))
+    @Column(name = "nick_name")
+    @OrderBy(clause = "nick_name desc")
+    private List<String> nickNames = new ArrayList<String>();
 
 위에 @OrderBy 는 JPA 패키지에 있는 것이 아니고, 하이버네이트쪽에 있는 겁니다.
 임포트하실 때 주의해주세요.
 
 SQL 출력 보면 SQL 문에 order by 박아서 보냅니다.
+
+
+{:class="go-to-index"}
+[Java Hibernate](index)

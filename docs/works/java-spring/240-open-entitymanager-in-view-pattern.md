@@ -1,4 +1,6 @@
-# Open EntityManager in View Pattern
+---
+title: Open EntityManager in View Pattern
+---
 
 2010-09-30
 
@@ -11,10 +13,13 @@ JPA 식으로 말하면 트랜젝션이 끝나면 엔터티 메니저가 닫혀�
 그래서 웹 리퀘스트 전체로 엔터티 메니저 생명기간을 확장할 필요가 있는데
 스프링에서는 스프링 설정에 아래와 같이 적어줍니다.
 
-	<mvc:interceptors>
-		<bean name="openSessionInViewInterceptor"
-					class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
-			<property name="entityManagerFactory" ref="emf"/>
-		</bean>
-	</mvc:interceptors>
+    <mvc:interceptors>
+      <bean name="openSessionInViewInterceptor"
+            class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
+        <property name="entityManagerFactory" ref="emf"/>
+      </bean>
+    </mvc:interceptors>
 
+
+{:class="go-to-index"}
+[Java Spring](index)

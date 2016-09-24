@@ -1,4 +1,6 @@
-# Types and Operations, Operator Precedence
+---
+title: Types and Operations, Operator Precedence
+---
 
 2011-07-17 23:05
 
@@ -17,23 +19,23 @@ a +++ b *** c 는 a, b, c 가 변수이고 +++, *** 이 메서드일 때 a +++ (
 
 Operator precedence
 
-	(all other special characters)
-	* / %
-	+ -
-	:
-	= !
-	< >
-	&
-	ˆ
-	|
-	(all letters)
-	(all assignment operators)
+    (all other special characters)
+    * / %
+    + -
+    :
+    = !
+    < >
+    &
+    ˆ
+    |
+    (all letters)
+    (all assignment operators)
 
 << 메서드는 < 로 시작하기 때문에 + 보다 우선순위가 낮다.
 그러므로 위 수식은 2 << (2 + 2) 가 된다.
 
-	scala> 2 << 2 + 2
-	res41: Int = 32
+    scala> 2 << 2 + 2
+    res41: Int = 32
 
 
 이 규칙에는 한 가지 예외가 있다.
@@ -66,3 +68,7 @@ a * b * c 는 (a * b) * c 가 된다.
 하지만 ( ) 를 이용해 어떤 연산자가 어떤 수식에 적용되는지 명확히 하는 것은 좋은 습관이다.
 *, /, % 등의 연산자가 +, - 보다 우선 순위가 높다는 것 정도는 당연하게 전달될 수 있겠다.
 그 외의 경우에는 (a + b) << c  처럼 적절히 ( ) 를 이용하는 것이 가독성을 높일 수 있다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

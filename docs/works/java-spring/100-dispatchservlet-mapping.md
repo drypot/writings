@@ -1,4 +1,6 @@
-# DispatcherServlet Mapping
+---
+title: DispatcherServlet Mapping
+---
 
 2010-10-25
 
@@ -29,13 +31,13 @@ Spring MVC 가 해석하는 이쁜 URL 과 Servlet Spec 의 URL Pattern 매칭�
 단점은, 모든 확장자를 (최소한 많이 사용되는 확장자는) 모두 확장자 패턴으로 등록해줘야합니다.
 그런데 생각해보면 몇 개 없습니다. 제 경우는 `css`, `jpeg`, `js` 정도.
 
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.jpg</url-pattern>
-		<url-pattern>*.css</url-pattern>
-		<url-pattern>*.js</url-pattern>
-		<url-pattern>*.ico</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>default</servlet-name>
+      <url-pattern>*.jpg</url-pattern>
+      <url-pattern>*.css</url-pattern>
+      <url-pattern>*.js</url-pattern>
+      <url-pattern>*.ico</url-pattern>
+    </servlet-mapping>
 
 ### Servlet 3.0 URL Path Mapping
 
@@ -54,5 +56,7 @@ extension-mapping 스타일의 servlet 은 url-pattern 이 '*.' 으로 시작합
 
 위 방식 모두 실패하면 default servlet 사용.  
 default servlet 을 표시하는 url-pattern 은 '/'.
-   
-   
+
+
+{:class="go-to-index"}
+[Java Spring](index)

@@ -1,4 +1,6 @@
-# Hello, Spring + Eclipse + Maven
+---
+title: Hello, Spring + Eclipse + Maven
+---
 
 2010-08-24
 
@@ -35,62 +37,62 @@ Maven 이 처음이면 이 과정이 황당한데 곧 익숙해진다.
 
 ### pom.xml
 
-	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-		<modelVersion>4.0.0</modelVersion>
-	
-		<groupId>net.directmedia</groupId>
-		<artifactId>test-spring</artifactId>
-		<version>1.0-SNAPSHOT</version>
-		<packaging>jar</packaging>
-	
-		<name>test-spring</name>
-	
-		<properties>
-			<maven.test.skip>true</maven.test.skip>
-			<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-			<org.springframework.version>3.0.3.RELEASE</org.springframework.version>
-		</properties>
-	
-		<dependencies>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>3.8.1</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-		</dependencies>
-	
-		<build>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<source>1.6</source>
-						<target>1.6</target>
-					</configuration>
-				</plugin>
-			</plugins>
-		</build>
-		
-	</project>
-	
+    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+      <modelVersion>4.0.0</modelVersion>
+    
+      <groupId>net.directmedia</groupId>
+      <artifactId>test-spring</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <packaging>jar</packaging>
+    
+      <name>test-spring</name>
+    
+      <properties>
+        <maven.test.skip>true</maven.test.skip>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.springframework.version>3.0.3.RELEASE</org.springframework.version>
+      </properties>
+    
+      <dependencies>
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>3.8.1</version>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+          <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-test</artifactId>
+          <version>${org.springframework.version}</version>
+        </dependency>
+      </dependencies>
+    
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <source>1.6</source>
+              <target>1.6</target>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+      
+    </project>
+  
 pom.xml 은 maven 설정파일이다.
 공 프로젝트에 pom.xml 이 만들어져 있을 것이다.
 pom.xml 을 위 내용으로 바꾼다.
@@ -113,16 +115,16 @@ Maven 가족의 컴파일러 플러그인이 기본으로 Java 1.4 를 쓰도록
 
 ### DataSource Object
 
-	package com.drypot.test.spring;
-	
-	import org.springframework.stereotype.Component;
-	
-	@Component
-	public class DataObject {
-		public String getValue() {
-			return "My Precious";
-		}
-	}
+    package com.drypot.test.spring;
+    
+    import org.springframework.stereotype.Component;
+    
+    @Component
+    public class DataObject {
+      public String getValue() {
+        return "My Precious";
+      }
+    }
 
 
 초간단 데이터 소스 오브젝트다.
@@ -138,20 +140,20 @@ Maven 가족의 컴파일러 플러그인이 기본으로 Java 1.4 를 쓰도록
 
 ### Service Object
 
-	package com.drypot.test.spring;
-	
-	import org.springframework.beans.factory.annotation.Autowired;
-	import org.springframework.stereotype.Component;
-	
-	@Component
-	public class Service {
+    package com.drypot.test.spring;
+    
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.stereotype.Component;
+    
+    @Component
+    public class Service {
 
-		@Autowired DataObject dataObject;
+      @Autowired DataObject dataObject;
 
-		public void processIt() {
-			System.out.println(dataObject.getValue());
-		}
-	}
+      public void processIt() {
+        System.out.println(dataObject.getValue());
+      }
+    }
 
 데이터를 소모하고 우리의 요청을 들어줄 서비스 오브젝트다.
 이놈도 스프링이 관리하는 스프링 오브젝트가 될 대상이므로 `@Component` 로 어노테이션 하였다.
@@ -163,21 +165,21 @@ Maven 가족의 컴파일러 플러그인이 기본으로 Java 1.4 를 쓰도록
 
 ### Main
 
-	package com.drypot.test.spring;
-	
-	import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-	
-	public class App 
-	{
-		public static void main( String[] args )
-		{
-			AnnotationConfigApplicationContext appContext =
-				new AnnotationConfigApplicationContext("com.drypot.test.spring");
-			Service service = appContext.getBean("service", Service.class);
-			service.processIt();
-		}
-	}
-	
+    package com.drypot.test.spring;
+    
+    import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+    
+    public class App 
+    {
+      public static void main( String[] args )
+      {
+        AnnotationConfigApplicationContext appContext =
+          new AnnotationConfigApplicationContext("com.drypot.test.spring");
+        Service service = appContext.getBean("service", Service.class);
+        service.processIt();
+      }
+    }
+  
 메인 클래스이다. 데이터, 서비스가 준비되었으니 이것들을 써 본다.
 
 먼저 스프링 오브젝트를 총괄하는 스프링 컨텍스트 `appContext` 를 만들어 준다.
@@ -197,7 +199,7 @@ Maven 가족의 컴파일러 플러그인이 기본으로 Java 1.4 를 쓰도록
 
 결과가 출력되었다.
 
-	My Precious
+    My Precious
 
 
 ### 왜 이 짓을 하는가
@@ -205,3 +207,7 @@ Maven 가족의 컴파일러 플러그인이 기본으로 Java 1.4 를 쓰도록
 Hello 치고는 무척 길었는데 직접 오브젝트 생성과 연결을 하지 않고 왜 이 짓을 하는지 가슴에 잘 와닿지 않을 것이다.
 하지만, 프로젝트가 복잡해지고 요구사항이 계속 바뀌는 환경에서는 장점이 많다.
 이 장점을 얻기 위해서는 스프링을 사용하는 것 뿐만 아니라  어플리케이션 비즈니스 클래스들의 설계도 잘 만들어야할 필요가 있다.
+
+
+{:class="go-to-index"}
+[Java Spring](index)

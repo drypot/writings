@@ -1,4 +1,6 @@
-# Scala Is High-Level
+---
+title: Scala Is High-Level
+---
 
 2011-07-08 00:17
 
@@ -13,18 +15,18 @@
 예를 들어 name 이란 이름의 String 이 대문자를 포함하고 있는지 확인한다고 하자.
 자바에서는 다음과 같이 적을 것이다.
 
-	// this is Java
-	boolean nameHasUpperCase = false;
-	for (int i = 0; i < name.length(); ++i) {
-		if (Character.isUpperCase(name.charAt(i))) {
-			nameHasUpperCase = true;
-			break;
-		}
-	}
+    // this is Java
+    boolean nameHasUpperCase = false;
+    for (int i = 0; i < name.length(); ++i) {
+      if (Character.isUpperCase(name.charAt(i))) {
+        nameHasUpperCase = true;
+        break;
+      }
+    }
 
 스칼라에서는 이것을 다음과 같이 적을 수 있다.
 
-	val nameHasUpperCase = name.exists(x => x.isUpper)
+    val nameHasUpperCase = name.exists(x => x.isUpper)
 
 이렇게 복잡한 절차적 구문을 라이브러리화 하는 컨트롤 추상화는
 코드의 중복을 막고 여러분의 프로그램을 더 작고 깔끔하게 유지하는데 도움이 된다.
@@ -36,7 +38,7 @@
 이것은 문자를 인자로 받아서 그것이 대문자인지 테스트하는 펑션을 나타낸다.
 같은 기능의 술어를 아래와 같이 더 짧게 적을 수도 있다.
 
-	val nameHasUpperCase = name.exists(_.isUpper)
+    val nameHasUpperCase = name.exists(_.isUpper)
 
 (참고로, 스칼라에서 _ 은 서로 다른 곳에서 매우 다양한 의미로 사용된다.)
 
@@ -44,21 +46,21 @@
 이를 구현하려면 인터페이스를 정의해야 하고, 이 인터페이스는 추상화할 기능을 묘사하는 메서드를 가질 것이다.
 예를 들어 스트링에 질의를 던지고 싶다면 hasProperty 라는 메서드를 갖는 ChracterProperty 인터페이스를 만들어야 할 것이다.
 
-	// this is Java
-	interface ChracterProperty {
-		boolean hasProperty(char ch);
-	}
+    // this is Java
+    interface ChracterProperty {
+      boolean hasProperty(char ch);
+    }
 
 이 인터페이스로 exists 메서드를 만들 수 있다.
 이 메서드는 문자열과 CharacterProperty 를 받아서 문자열에 이 속성을 만족하는 문자가 있다면 참을 돌려준다.
 exists 메서드는 다음과 같이 부를 수 있다.
 
-	// this is Java
-	exists(name, new CharacterProperty() {
-		public boolean hasProperty(char ch) {
-			return Character.isUpperCase(ch);
-		}
-	});
+    // this is Java
+    exists(name, new CharacterProperty() {
+      public boolean hasProperty(char ch) {
+        return Character.isUpperCase(ch);
+      }
+    });
 
 하지만 이 모든 것은 너무 과하다.
 사실 너무 과해서 대부분의 자바 개발자들은 절때 이렇게 하지 않을 것이다.
@@ -81,3 +83,7 @@ exists 메서드는 다음과 같이 부를 수 있다.
 
 람다는 깔끔하고 쓰기 쉽다.
 하지만 루프 단계마다 펑션 콜이 발생해서 루프에 비해 보통 두세 배 느리다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

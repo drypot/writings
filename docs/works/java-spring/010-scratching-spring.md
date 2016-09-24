@@ -1,4 +1,6 @@
-# Scratching Spring
+---
+title: Scratching Spring
+---
 
 ### 2010-07-29
 
@@ -6,7 +8,7 @@
 
 3.0 와서 별거 별거 다 껴서 구색을 무자게 갖추었다. 기능 요약 동영상
 
-http://www.springsource.org/node/2717
+<http://www.springsource.org/node/2717>{:target="_blank"}
 
 2010 년도 이클립스 서베이 리포트 보면, 서버 프레임웍으로 Spring 19.7%, EJB 18.6%, 아무것도 안 쓴다 24%, 기타 30%.
 단일 제품으로는 제일 많이 쓰는데 안 쓰는 인간들이 더 많다.
@@ -101,3 +103,7 @@ GlassFish 가 사는 방법은 레이어 쪼개서 Java EE 떼버리고 Spring �
 정체성 혼란이 발생하려나?
 
 다른건 모르겠지만 일단 Spring MVC 가 Java EE JSF 보다는 방향이 맞다.
+
+
+{:class="go-to-index"}
+[Java Spring](index)

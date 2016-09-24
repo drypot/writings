@@ -1,4 +1,6 @@
-# Session Scope Bean
+---
+title: Session Scope Bean
+---
 
 2010-10-15
 
@@ -10,39 +12,39 @@ Setvlet API 로 HTTP 세션을 구현하면
 
 말로하려니 이상한데 일단 걍 코드를 보면.
 
-	@Component
-	@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
-	public class Seed {
-		
-		private int count;
-		
-		public int getCount() {
-			return count++;
-		}
-		
-		public void setCount(int count) {
-			this.count = count;
-		}
-		
-	}
+    @Component
+    @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public class Seed {
+      
+      private int count;
+      
+      public int getCount() {
+        return count++;
+      }
+      
+      public void setCount(int count) {
+        this.count = count;
+      }
+      
+    }
 
 무엇인가 세션처리하고 싶은 오브젝트 예입니다.
 위와 같이 `@Scope` 어노테이션을 붙여주면 끝입니다.
 
 사용할 때는 `Seed` 오브젝트를 와이어링해서 쓰면됩니다.
 
-	@Controller
-	public class PostController {
-	
-		@Autowired
-		private Seed seed;
-		
-		@RequestMapping(value = "/post", method = RequestMethod.GET)
-		@ResponseBody
-		public String create() {
-			return "Hello " + seed.getCount();
-		}
-	}
+    @Controller
+    public class PostController {
+    
+      @Autowired
+      private Seed seed;
+      
+      @RequestMapping(value = "/post", method = RequestMethod.GET)
+      @ResponseBody
+      public String create() {
+        return "Hello " + seed.getCount();
+      }
+    }
 
 
 일반적인 스프링오브젝트와 세션 스코프 스프링오브젝트가 다른 점은
@@ -53,3 +55,6 @@ Setvlet API 로 HTTP 세션을 구현하면
 어쨌든 결론은 `Session` 오브젝트 관리하기 위해 `getSession` 하고,
 `map` 에 넣고 빼고 하는 노가다 작업은 필요 없어졌습니다.
 
+
+{:class="go-to-index"}
+[Java Spring](index)

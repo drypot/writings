@@ -1,16 +1,18 @@
-# Autowire HttpServletRequest
+---
+title: Autowire HttpServletRequest
+---
 
 2010-10-19
 
 Session 스콥 빈 선언을 어떻게 하는지는 아래 글에서 적었었습니다.
 아래 예처럼 클래스를 정의하고 @Autowired 하면 되었었습니다.
 
-	@Component
-	@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
-	public class AppSession {
-		@Autowired
-		private HttpServletRequest request;	
-	}
+    @Component
+    @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public class AppSession {
+      @Autowired
+      private HttpServletRequest request; 
+    }
 
 
 Session 스콥 빈에서 HttpServletRequest 를 쓰려면 어떻게 해야할지 고민이 되었는데 (문서에도 안 보이고 =,=)
@@ -27,3 +29,7 @@ HttpServletRequest 는 당연 리퀘스트 스콥입니다.
 <http://forum.springsource.org/showthread.php?t=88804>
 
 그래도 Request 만이라도 인젝트 해서 쓸 수 있으니 지저분하게 Request 인자패스 하는 일은 줄어들 것 같습니다.
+
+
+{:class="go-to-index"}
+[Java Spring](index)

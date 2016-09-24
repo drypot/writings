@@ -1,4 +1,6 @@
-# SpringSecurity
+---
+title: SpringSecurity
+---
 
 2010-11-09
 
@@ -17,3 +19,7 @@ Spring MVC 같으면 Interceptor / Scope Bean 들 쓰면 되는데
 
 새벽에 맥북 무릅팍에 놓고 좀 코딩하다가 사무실 나와서 마무리하고 돌려봤는데 역시 MVC Interceptor 가 맞는 듯.
 2 주간 스펙 들고 씨름하던거 코드 한뼘으로 해결.
+
+
+{:class="go-to-index"}
+[Java Spring](index)

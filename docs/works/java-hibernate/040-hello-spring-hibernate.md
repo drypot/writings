@@ -1,4 +1,6 @@
-# Hello, Spring + Hibernate
+---
+title: Hello, Spring + Hibernate
+---
 
 2010-09-28
 
@@ -29,32 +31,32 @@
 
 ### Domain Object
 
-	package net.directmedia.todaysfortune.domain;
-	import ...
-	
-	@Entity
-	public class Account {
-	
-		@Id
-		@GeneratedValue
-		private int id;
-	
-		private String name;
-	
-		@Column(columnDefinition = "char(40)")
-		private String udid;
-	
-		@DateTimeFormat(pattern = "yyyyMMdd")
-		@Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
-		private LocalDate birthDate;
-	
-		private boolean birthDateSolar;
-	
-		private int popularity;
-	
-		// getters, setters
-	
-	}
+    package net.directmedia.todaysfortune.domain;
+    import ...
+    
+    @Entity
+    public class Account {
+    
+      @Id
+      @GeneratedValue
+      private int id;
+    
+      private String name;
+    
+      @Column(columnDefinition = "char(40)")
+      private String udid;
+    
+      @DateTimeFormat(pattern = "yyyyMMdd")
+      @Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
+      private LocalDate birthDate;
+    
+      private boolean birthDateSolar;
+    
+      private int popularity;
+    
+      // getters, setters
+    
+    }
 
 스프링 컨트롤러에서 부터 하이버네이트 DAO 까지 동일하게 사용되는 도메인 클래스 예입니다.
 특징은 클래스 머리에 `@Entity` 가 붙어 있습니다.
@@ -94,39 +96,39 @@ MySql 에서 자동으로 키젠을 할 것이므로 `@GeneratedValue` 도 붙�
 
 ### Controller Object
 
-	package net.directmedia.todaysfortune.controller;
-	import ...
-	
-	@Controller
-	public class AccountController {
-	
-		@Autowired
-		private AccountService accountService;
-	
-		@RequestMapping(value = "/account/create", method = RequestMethod.GET)
-		@ResponseBody
-		public String create(Account account, BindingResult result) {
-			try {
-				accountService.create(account);
-				return String.valueOf(account.getId());
-			} catch(PersistenceException e) {
-				return "-1";
-			}
-		}
-	
-		@RequestMapping(value = "/account/get", method = RequestMethod.GET)
-		@ResponseBody
-		public String get(String udid) {
-			try {
-				Account account = accountService.getByUdid(udid);
-				StringBuilder buf = new StringBuilder(512);
-				buf.append( ... );
-				return buf.toString();
-			} catch(NoResultException e) {
-				return "-1";
-			}
-		}
-	}
+    package net.directmedia.todaysfortune.controller;
+    import ...
+    
+    @Controller
+    public class AccountController {
+    
+      @Autowired
+      private AccountService accountService;
+    
+      @RequestMapping(value = "/account/create", method = RequestMethod.GET)
+      @ResponseBody
+      public String create(Account account, BindingResult result) {
+        try {
+          accountService.create(account);
+          return String.valueOf(account.getId());
+        } catch(PersistenceException e) {
+          return "-1";
+        }
+      }
+    
+      @RequestMapping(value = "/account/get", method = RequestMethod.GET)
+      @ResponseBody
+      public String get(String udid) {
+        try {
+          Account account = accountService.getByUdid(udid);
+          StringBuilder buf = new StringBuilder(512);
+          buf.append( ... );
+          return buf.toString();
+        } catch(NoResultException e) {
+          return "-1";
+        }
+      }
+    }
 
 웹 리퀘스트를 받는 컨트롤러부입니다.
 웹 리퀘스트에서 인자를 받고 서비스 오브젝트에 넘기는 일까지만 합니다.
@@ -139,32 +141,32 @@ MySql 에서 자동으로 키젠을 할 것이므로 `@GeneratedValue` 도 붙�
 
 ### Service Object
 
-	package net.directmedia.todaysfortune.service;
-	import ...
-	
-	@Component
-	public class AccountService {
-	
-		@Autowired
-		private AccountDao accountDao;
-	
-		@Transactional
-		public void create(Account account) {
-			accountDao.create(account);
-		}
-	
-		@Transactional
-		public void update(Account account) {
-			accountDao.update(account);
-		}
-	
-		@Transactional
-		public Account getByUdid(String udid) {
-			return accountDao.getByUdid(udid);
-		}
-	
-		...
-	}
+    package net.directmedia.todaysfortune.service;
+    import ...
+    
+    @Component
+    public class AccountService {
+    
+      @Autowired
+      private AccountDao accountDao;
+    
+      @Transactional
+      public void create(Account account) {
+        accountDao.create(account);
+      }
+    
+      @Transactional
+      public void update(Account account) {
+        accountDao.update(account);
+      }
+    
+      @Transactional
+      public Account getByUdid(String udid) {
+        return accountDao.getByUdid(udid);
+      }
+    
+      ...
+    }
 
 서비스 오브젝트 클래스입니다.
 아직 비즈니스 로직이 들어차기 전이라 내용이 거의 없습니다.
@@ -182,33 +184,33 @@ DAO 오브젝트 필드는 역시나 스프링으로부터 자동으로 생성 �
 
 ### DAO Object
 
-	package net.directmedia.todaysfortune.dao;
-	import ...
-	
-	@Component
-	public class AccountDao {
-	
-		@PersistenceContext
-		EntityManager em;
-	
-		public void create(Account account) {
-			em.persist(account);
-		}
-	
-		public Account get(int accountId) {
-			return em.find(Account.class,  accountId);
-		}
-	
-		public Account getByUdid(String udid) {
-			return (Account) em.createQuery("select a from Account a where a.udid = ?")
-					.setParameter(1, udid)
-					.getSingleResult();
-		}
-	
-		public void update(Account account) {
-			em.merge(account);
-		}
-	}
+    package net.directmedia.todaysfortune.dao;
+    import ...
+    
+    @Component
+    public class AccountDao {
+    
+      @PersistenceContext
+      EntityManager em;
+    
+      public void create(Account account) {
+        em.persist(account);
+      }
+    
+      public Account get(int accountId) {
+        return em.find(Account.class,  accountId);
+      }
+    
+      public Account getByUdid(String udid) {
+        return (Account) em.createQuery("select a from Account a where a.udid = ?")
+            .setParameter(1, udid)
+            .getSingleResult();
+      }
+    
+      public void update(Account account) {
+        em.merge(account);
+      }
+    }
 
 하이버네이트의 DAO 오브젝트 부분입니다.
 좀 썰렁하지만, 이걸로 디비 CRUD 오퍼레이션이 모두 가능합니다.
@@ -246,21 +248,21 @@ DAO 오브젝트들도 마찬가지로 시스템에 딱 하나만 생성되고 �
 JPA 설정까지 스프링안에 가두면 좋겠는데, 그것 까지는 안 되더군요.
 간단한  JPA 용 파일을 하나 빼두어야 합니다.
 
-	
+  
 ### JPA XML
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<persistence
-		xmlns="http://java.sun.com/xml/ns/persistence"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-		version="2.0">
-	
-		<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
-			<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		</persistence-unit>
-	
-	</persistence>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <persistence
+      xmlns="http://java.sun.com/xml/ns/persistence"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+      version="2.0">
+    
+      <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      </persistence-unit>
+    
+    </persistence>
 
 JPA 설정파일입니다.
 보통 JPA 문서에는 되게 길게 나와 있는데 필요한 정보를 스프링 설정으로 모두 옮겨서 매우 간출해졌습니다.
@@ -277,37 +279,37 @@ JPA 설정파일입니다.
 이 글을 편집하고 있는 시점에 Spring 설정을 XML 대신 Java 코드로 할 수 있는 방법이 소개되고 있으나
 Spring 3.1 stable 버전이 아직 릴리즈되지 않았으므로 일단은 XML 설정법으로 설명을 하겠습니다.
 
-	<tx:annotation-driven/>
-	
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost/todays_fortune"/>
-		<property name="username" value="root"/>
-		<property name="password" value=""/>
-		<property name="defaultAutoCommit" value="true"/>
-		<property name="initialSize" value="5"/>
-		<property name="maxActive" value="30"/>
-		<property name="maxIdle" value="5"/>
-		<property name="maxWait" value="30000"/>
-		<property name="validationQuery" value="SELECT 1"/>
-	</bean>
-	
-	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="jpaProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLMyISAMDialect</prop>
-				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">validate</prop>
-				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-			</props>
-		</property>
-	</bean>
-	
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="emf"/>
-	</bean>
+    <tx:annotation-driven/>
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+      <property name="url" value="jdbc:mysql://localhost/todays_fortune"/>
+      <property name="username" value="root"/>
+      <property name="password" value=""/>
+      <property name="defaultAutoCommit" value="true"/>
+      <property name="initialSize" value="5"/>
+      <property name="maxActive" value="30"/>
+      <property name="maxIdle" value="5"/>
+      <property name="maxWait" value="30000"/>
+      <property name="validationQuery" value="SELECT 1"/>
+    </bean>
+    
+    <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="dataSource" ref="dataSource"/>
+      <property name="jpaProperties">
+        <props>
+          <prop key="hibernate.dialect">org.hibernate.dialect.MySQLMyISAMDialect</prop>
+          <prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
+          <prop key="hibernate.show_sql">true</prop>
+          <prop key="hibernate.hbm2ddl.auto">validate</prop>
+          <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+        </props>
+      </property>
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+      <property name="entityManagerFactory" ref="emf"/>
+    </bean>
 
 
 스프링 설정입니다.
@@ -339,117 +341,117 @@ Spring 3.1 stable 버전이 아직 릴리즈되지 않았으므로 일단은 XML
 
 아래 버전 조합은 2010 년 9 월 경 맞춘 것입니다.
 
-	<properties>
-		<maven.test.skip>true</maven.test.skip>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.springframework.version>3.0.4.RELEASE</org.springframework.version>
-		<org.hibernate.version>3.5.5-Final</org.hibernate.version>
-	</properties>
-	
-	<dependencies>
-	<!-- 스프링 관련 -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<!-- 하이버네이트 엔터티메니저 패키지 링크걸면 어노테이션, 코어 다 따라옵니다. -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${org.hibernate.version}</version>
-		</dependency>
-		<!-- JPA2 API, 전통적으로 JSR API 는 메이븐 리포지터리를 무시하기 때문에.. 하이버네이트에서 제공하는 것으로 =,= -->
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.0.Final</version>
-		</dependency>
-		<!-- 하이버네이트는 CGLIB 프로젝트가 죽어서 자바시스트로 이사갔는데, 스프링은 아직 이걸 씁니다 --> 
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>2.2</version>
-		</dependency>
-		<!-- 조다 타임 관련 -->
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>1.6</version>
-		</dependency>
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time-hibernate</artifactId>
-			<version>1.2</version>
-			<!-- 그냥 링크걸면 하이버네이트 구버전이 따라오면서 쫑나니 아래 처럼 익스클루드 -->
-			<exclusions>
-				<exclusion>
-					<groupId>org.hibernate</groupId>
-					<artifactId>hibernate</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<!-- 스프링에서 파일 업로드 기능 구현에 사용 -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<!-- Servlet API, 정식 7.0 API 릴리즈를 쓰려면 Java EE 다 받아야 하니 걍 톰켓에 들어 있는거 간단히 씁시다 --> 
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-servlet-api</artifactId>
-			<version>7.0.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- 디비 컨넥션 풀 라이브러리 -->
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<!-- 보시다시피 MySql 드라이버 -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.13</version>
-		</dependency>
-		<!-- 로깅 라이브러리 -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.5.8</version>
-		</dependency>
-	
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
-			<scope>test</scope>
-		</dependency>
-	
-	</dependencies>
-	
+    <properties>
+      <maven.test.skip>true</maven.test.skip>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <org.springframework.version>3.0.4.RELEASE</org.springframework.version>
+      <org.hibernate.version>3.5.5-Final</org.hibernate.version>
+    </properties>
+    
+    <dependencies>
+    <!-- 스프링 관련 -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-orm</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+      <!-- 하이버네이트 엔터티메니저 패키지 링크걸면 어노테이션, 코어 다 따라옵니다. -->
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+        <version>${org.hibernate.version}</version>
+      </dependency>
+      <!-- JPA2 API, 전통적으로 JSR API 는 메이븐 리포지터리를 무시하기 때문에.. 하이버네이트에서 제공하는 것으로 =,= -->
+      <dependency>
+        <groupId>org.hibernate.javax.persistence</groupId>
+        <artifactId>hibernate-jpa-2.0-api</artifactId>
+        <version>1.0.0.Final</version>
+      </dependency>
+      <!-- 하이버네이트는 CGLIB 프로젝트가 죽어서 자바시스트로 이사갔는데, 스프링은 아직 이걸 씁니다 --> 
+      <dependency>
+        <groupId>cglib</groupId>
+        <artifactId>cglib</artifactId>
+        <version>2.2</version>
+      </dependency>
+      <!-- 조다 타임 관련 -->
+      <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+        <version>1.6</version>
+      </dependency>
+      <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time-hibernate</artifactId>
+        <version>1.2</version>
+        <!-- 그냥 링크걸면 하이버네이트 구버전이 따라오면서 쫑나니 아래 처럼 익스클루드 -->
+        <exclusions>
+          <exclusion>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <!-- 스프링에서 파일 업로드 기능 구현에 사용 -->
+      <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>1.2.1</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>1.4</version>
+      </dependency>
+      <!-- Servlet API, 정식 7.0 API 릴리즈를 쓰려면 Java EE 다 받아야 하니 걍 톰켓에 들어 있는거 간단히 씁시다 --> 
+      <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-servlet-api</artifactId>
+        <version>7.0.0</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- 디비 컨넥션 풀 라이브러리 -->
+      <dependency>
+        <groupId>commons-dbcp</groupId>
+        <artifactId>commons-dbcp</artifactId>
+        <version>1.4</version>
+      </dependency>
+      <!-- 보시다시피 MySql 드라이버 -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.13</version>
+      </dependency>
+      <!-- 로깅 라이브러리 -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.5.8</version>
+      </dependency>
+    
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.8.1</version>
+        <scope>test</scope>
+      </dependency>
+    
+    </dependencies>
+
 
 ### 진짜 길군요
 
@@ -457,3 +459,6 @@ Java 개발 환경의 현실입니다. 누굴탓할까요.
 결과는 간단한데 Spring / JPA / Hibernate 연결하느라 머리에 쥐나는 줄 알았습니다.
 그나마 바탕에 이렇게 한번 깔아 두면 그 위에 하이버네이트 동작시키고 비즈니스 로직 구현하는 것은 조금 수월해 집니다.
 
+
+{:class="go-to-index"}
+[Java Hibernate](index)

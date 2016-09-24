@@ -1,4 +1,6 @@
-# Scala Is Statically Typed
+---
+title: Scala Is Statically Typed
+---
 
 2011-07-08 21:08
 
@@ -88,12 +90,12 @@ IDE 는 수식의 정적 타입을 확인하고 해당 타입이 가진 모든 �
 
 정적 타입이 프로그램 문서화에 유용할지라도 이것이 프로그램을 난잡하게 만든다면 매우 성가실 것이다..
 
-	def f(x: String) = ...
+    def f(x: String) = ...
 
 위 메서드 정의에서 f 의 인자가 String 이어야한다는 것은 유용한 정보다.
 하지만, 아래 예에서 두 타입 설명중 최소한 하나는 불필요해 보인다.
 
-	val x: HashMap[Int, String] = new HashMap[Int, String]()
+    val x: HashMap[Int, String] = new HashMap[Int, String]()
 
 x 는 Int 를 키로 갖고 String 을 값으로 갖는 HashMap 이다라는 사실은 한 번만 말하면 되는 것이다.
 똑 같은 구절을 두 번 반복할 필요는 없다.
@@ -101,8 +103,8 @@ x 는 Int 를 키로 갖고 String 을 값으로 갖는 HashMap 이다라는 사
 스칼라는 매우 정교한 타입 추론 시스템을 가지고 있어서 귀찮다고 생각할 수 있는 거의 모든 타입 정보를 생락할 수 있다.
 아래에 위의 구문와 같은 기능을 하는 두 예가 나와 있다.
 
-	val x = new HashMap[Int, String]()
-	val x: Map[Int, String] = new HashMap()
+    val x = new HashMap[Int, String]()
+    val x: Map[Int, String] = new HashMap()
 
 스칼라에서는 구체적인 타입이 전혀 없는 코드들을 쉽게 만날 수 있다.
 동적 타입 스크립트 언어로 쓴 것 같아 보이기도 한다.
@@ -112,3 +114,7 @@ x 는 Int 를 키로 갖고 String 을 값으로 갖는 HashMap 이다라는 사
 유연한 사용 패턴을 가능하게 하기 위해 매우 정교하게 타입들을 사용하기 때문이다.
 재사용 가능한 콤포넌트의 인터페이스를 구성하는 멤버들의 타입 특성은 명시적으로 적어야 한다.
 이 타입 특성들이 콤포넌트와 클라이언트간 계약의 필수적인 부분을 구성하기 때문이다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

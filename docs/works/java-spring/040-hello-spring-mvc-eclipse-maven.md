@@ -1,4 +1,6 @@
-# Hello, Spring MVC + Eclipse + Maven
+---
+title: Hello, Spring MVC + Eclipse + Maven
+---
 
 2010-09-01
 
@@ -22,80 +24,80 @@ package: net.directmedia.mvcdemo (또는 원하시는 패키지명) 을 지정�
 
 ### pom.xml
 
-	<project
-		xmlns="http://maven.apache.org/POM/4.0.0"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	
-		<modelVersion>4.0.0</modelVersion>
-	
-		<groupId>net.directmedia</groupId>
-		<artifactId>test-spring-mvc</artifactId>
-		<version>1.0-SNAPSHOT</version>
-		<packaging>war</packaging>
-	
-		<name>test-spring-mvc</name>
-	
-		<properties>
-			<maven.test.skip>true</maven.test.skip>
-			<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-			<org.springframework.version>3.0.4.RELEASE</org.springframework.version>
-		</properties>
-	
-		<dependencies>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>3.8.1</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>joda-time</groupId>
-				<artifactId>joda-time</artifactId>
-				<version>1.6</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-fileupload</groupId>
-				<artifactId>commons-fileupload</artifactId>
-				<version>1.2.1</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>1.4</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-		</dependencies>
-	
-		<build>
-			<finalName>test-spring-mvc</finalName>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<source>1.6</source>
-						<target>1.6</target>
-					</configuration>
-				</plugin>
-			</plugins>
-		</build>
-	
-	</project>
+    <project
+      xmlns="http://maven.apache.org/POM/4.0.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    
+      <modelVersion>4.0.0</modelVersion>
+    
+      <groupId>net.directmedia</groupId>
+      <artifactId>test-spring-mvc</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <packaging>war</packaging>
+    
+      <name>test-spring-mvc</name>
+    
+      <properties>
+        <maven.test.skip>true</maven.test.skip>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.springframework.version>3.0.4.RELEASE</org.springframework.version>
+      </properties>
+    
+      <dependencies>
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>3.8.1</version>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>joda-time</groupId>
+          <artifactId>joda-time</artifactId>
+          <version>1.6</version>
+        </dependency>
+        <dependency>
+          <groupId>commons-fileupload</groupId>
+          <artifactId>commons-fileupload</artifactId>
+          <version>1.2.1</version>
+        </dependency>
+        <dependency>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+          <version>1.4</version>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+          <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-test</artifactId>
+          <version>${org.springframework.version}</version>
+        </dependency>
+      </dependencies>
+    
+      <build>
+        <finalName>test-spring-mvc</finalName>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <source>1.6</source>
+              <target>1.6</target>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    
+    </project>
 
 일단 초기 pom.xml 파일 내용을 위 내용으로 교체합니다.
 스프링 관련 디펜던시가 추가 되었고 자바 기본 Date / Calendar 클래스가 너무 후져서 joda-time 추가했습니다.
@@ -124,23 +126,23 @@ Maven 이클립스간 프로젝트 정보를 싱크합니다.
 퍼스펙티브 변경은 이클립스 좌상단 귀퉁이에 아이콘들 가지고 할 수 있습니다.
 
 ### Controller Object
-	
-	package net.directmedia.mvcdemo.controller;
-	
-	import org.springframework.stereotype.Controller;
-	import org.springframework.web.bind.annotation.RequestMapping;
-	import org.springframework.web.bind.annotation.RequestMethod;
-	import org.springframework.web.bind.annotation.RequestParam;
-	import org.springframework.web.bind.annotation.ResponseBody;
-	
-	@Controller
-	public class DemoController {
-		@RequestMapping(value = "/hello", method = RequestMethod.GET)
-		@ResponseBody
-		public String hello(@RequestParam String name) {
-			return "Hello " + name;
-		}
-	}
+    
+    package net.directmedia.mvcdemo.controller;
+    
+    import org.springframework.stereotype.Controller;
+    import org.springframework.web.bind.annotation.RequestMapping;
+    import org.springframework.web.bind.annotation.RequestMethod;
+    import org.springframework.web.bind.annotation.RequestParam;
+    import org.springframework.web.bind.annotation.ResponseBody;
+    
+    @Controller
+    public class DemoController {
+      @RequestMapping(value = "/hello", method = RequestMethod.GET)
+      @ResponseBody
+      public String hello(@RequestParam String name) {
+        return "Hello " + name;
+      }
+    }
 
 첫 자바 코드를 추가해 봅니다.
 좋아하시는 방식으로 New -> Class 파일 하시고
@@ -156,26 +158,26 @@ URL 이 "/hello?name=drypot" 이었다면 name 인자로 drypot 이 전달됩니
 
 ### web.xml
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<web-app
-		xmlns="http://java.sun.com/xml/ns/javaee"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-		version="2.5">
-	
-		<servlet>
-			<servlet-name>spring</servlet-name>
-			<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-			<load-on-startup>1</load-on-startup>
-		</servlet>
-	
-		<servlet-mapping>
-			<servlet-name>spring</servlet-name>
-			<url-pattern>/</url-pattern>
-		</servlet-mapping>
-	
-	</web-app>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <web-app
+      xmlns="http://java.sun.com/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+      version="2.5">
+    
+      <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+      </servlet>
+    
+      <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/</url-pattern>
+      </servlet-mapping>
+    
+    </web-app>
 
 자바 클래스가 있다고 바로 실행될 수는 없지요.
 웹 컨테이너, 스프링 컨테이너, 단계 단계 준비를 합니다.
@@ -189,35 +191,35 @@ Spring MVC 를 쓰기 위해서는 Spring DispatcherServlet 을 등록해줘야�
 
 ### spring-servlet.xml
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<beans xmlns="http://www.springframework.org/schema/beans"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xmlns:p="http://www.springframework.org/schema/p"
-		xmlns:mvc="http://www.springframework.org/schema/mvc"
-		xmlns:context="http://www.springframework.org/schema/context"
-		xsi:schemaLocation="
-			http://www.springframework.org/schema/beans
-			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-			http://www.springframework.org/schema/context
-			http://www.springframework.org/schema/context/spring-context-3.0.xsd
-			http://www.springframework.org/schema/mvc
-			http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-	
-		<context:component-scan base-package="net.directmedia.mvcdemo" />
-		<mvc:annotation-driven/>
-		<!--<mvc:default-servlet-handler/>-->
-	
-		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-			<property name="prefix" value="/WEB-INF/jsp/" />
-			<property name="suffix" value=".jsp" />
-		</bean>
-	
-		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-			<property name="maxUploadSize" value="16777216" /> <!-- 16 MB -->
-			<property name="defaultEncoding" value="UTF-8" />
-		</bean>
-	
-	</beans>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:p="http://www.springframework.org/schema/p"
+      xmlns:mvc="http://www.springframework.org/schema/mvc"
+      xmlns:context="http://www.springframework.org/schema/context"
+      xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    
+      <context:component-scan base-package="net.directmedia.mvcdemo" />
+      <mvc:annotation-driven/>
+      <!--<mvc:default-servlet-handler/>-->
+    
+      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+      </bean>
+    
+      <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="16777216" /> <!-- 16 MB -->
+        <property name="defaultEncoding" value="UTF-8" />
+      </bean>
+    
+    </beans>
 
 먼가 또 가득 나왔습니다.
 Tomcat 설정이 끝났으니 Spring 설정을 해줘야합니다.
@@ -229,13 +231,13 @@ Tomcat 설정이 끝났으니 Spring 설정을 해줘야합니다.
 
 각 행별 의미는 다음과 같습니다.
 
-	<context:component-scan base-package="net.directmedia.mvcdemo" />
+    <context:component-scan base-package="net.directmedia.mvcdemo" />
 
 스프링에게 해당 패키지를 스캐닝하라는 의미입니다.
 무엇을 스캐닝 하냐면 위에서 어노테이션으로 설정한 `@Controller` 나 `@RequestParam` 같은 메타 정보를 스케닝하라는 말입니다.
 이 문장 설정이 있어야 스프링과 우리가 만든 컨트롤러 코드가 연결됩니다.
 
-	<mvc:annotation-driven/>
+    <mvc:annotation-driven/>
 
 스프링은 모듈별로 옵션이 많은데 MVC 구현 방식도 그렇습니다.
 스프링에게 우리가 사용할 MVC 가 어노테이션 방식이니 그에 따라 Spring MVC 인프라 내부 설정을 하라는 말입니다.
@@ -291,15 +293,19 @@ Servers 판낼에서 방금 만든 톰켓 설정 지정하고 바로 위에 녹�
 
 브라우저에 아래 내용을 입력해서 톰켓에 리퀘스트를 보내봅니다.
 
-	http://localhost:8080/hello?name=drypot
+   http://localhost:8080/hello?name=drypot
 
 
 결과.
 
-	Hello drypot
+    Hello drypot
 
 ### 길다
 
 좀 길었는데요, 우울하게도 너무 길고 복잡하지만 다행스러운 것은 이 프로세스를 프로젝트 초기 세팅시만 실시하면 된다는 겁니다.
 다음부터는 Maven 이나 Eclipse, Tomcat 설정 관련 부분 빼고 스프링에 대해서만 부분 부분 코멘트하겠습니다.
 매우 짧아지겠네요.
+
+
+{:class="go-to-index"}
+[Java Spring](index)

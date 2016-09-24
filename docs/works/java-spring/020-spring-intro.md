@@ -1,4 +1,6 @@
-# 세상에서 제일 간단한 스프링 소개서
+---
+title: Spring 소개
+---
 
 2010-08-17
 
@@ -9,25 +11,25 @@ Unit Testing 은 Test Case 모듈을 사용해서 메인 모듈의 동작을 점
 그런데, Unit Testing 를 하다보면 자주 발생하는 난처한 상황이 있다.
 예로 TwitterClient 를 만들어 테스트하려고 하면 테스트를 돌릴 때마다 실제 트위터 서버에 접속해야 한다.
 
-	class TwitterClient {
-		private TwitterConnection tc;
-	
-		public TwitterClient() {
-			tc = new TwitterConnection("http://twiiter.com/...");
-		}
-	}
+    class TwitterClient {
+      private TwitterConnection tc;
+    
+      public TwitterClient() {
+        tc = new TwitterConnection("http://twiiter.com/...");
+      }
+    }
 
 이 문제를 어떻게 해결해야 할까? 간단하다. 
 메서드 내부에서 `TwitterConnection` 오브젝트를 만드는 대신
 외부에서 테스트용 `TwitterConnection` 오브젝트를 만들어 전달하면 된다.
 
-	class TwitterClient {
-		private TwitterConnection tc;
-	
-		public TwitterClient(TwitterConnection tc) {
-			this.tc = tc;
-		}
-	}
+    class TwitterClient {
+      private TwitterConnection tc;
+    
+      public TwitterClient(TwitterConnection tc) {
+        this.tc = tc;
+      }
+    }
 
 별 차이 없는 것 같지만 사용할 오브젝트를 외부에서 제공 받는 이런 방식은 프로그램의 유연성을 대폭 증가시켜준다.
 그리고, 누가 이 방식에 Dependency Injection 이라고 이름을 붙였다. 
@@ -51,3 +53,7 @@ TDD 를 하지 않으면 DI 와 처음엔 스프링의 필요성이 잘 느껴�
 
 "다른 괜찮은 대안은 없나요?"  
 "없습니다."
+
+
+{:class="go-to-index"}
+[Java Spring](index)

@@ -1,4 +1,6 @@
-# Spring + JUnit + MySQL + Rollback
+---
+title: Spring + JUnit + MySQL + Rollback
+---
 
 2010-11-17
 
@@ -18,22 +20,24 @@ EntityManager 케쉬 운영 특성상 어떤 경우는 데이터가 들어갈 �
 Commit / Rollback 선택은 @Rollback 어노테이션으로 한다.
 토비3에 관련 페이지는 553.
 
-	@RunWith(SpringJUnit4ClassRunner.class)
-	@ContextConfiguration(locations = "/test-spring-config.xml")
-	public class PostDaoTest {
-	
-		@PersistenceContext private EntityManager em;
-		@Autowired private PostDao dao;
-	
-		@Before
-		public void setUp() throws Exception {
-		}
-	
-		@Test
-		@Transactional
-		@Rollback(false)
-		public void testPersist() {
-		}
-	}
-	
-	
+    @RunWith(SpringJUnit4ClassRunner.class)
+    @ContextConfiguration(locations = "/test-spring-config.xml")
+    public class PostDaoTest {
+    
+      @PersistenceContext private EntityManager em;
+      @Autowired private PostDao dao;
+    
+      @Before
+      public void setUp() throws Exception {
+      }
+    
+      @Test
+      @Transactional
+      @Rollback(false)
+      public void testPersist() {
+      }
+    }
+
+
+{:class="go-to-index"}
+[Java Spring](index)

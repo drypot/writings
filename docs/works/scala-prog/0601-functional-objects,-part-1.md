@@ -1,4 +1,6 @@
-# Functional Objects, Part 1
+---
+title: Functional Objects, Part 1
+---
 
 2011-07-18 23:36
 
@@ -32,12 +34,12 @@ n 은 분자(numberator), d 는 분모(denominator)라 한다.
 
 이 장의 마지막에서 얻게될 유리수 클래스의 용법을 미리 보면 아래와 같다.
 
-	scala> val oneHalf = new Rational(1, 2)
-	oneHalf: Rational = 1/2
-	scala> val twoThirds = new Rational(2, 3)
-	twoThirds: Rational = 2/3
-	scala> (oneHalf / 7) + (1 - twoThirds)
-	res0: Rational = 17/42
+    scala> val oneHalf = new Rational(1, 2)
+    oneHalf: Rational = 1/2
+    scala> val twoThirds = new Rational(2, 3)
+    twoThirds: Rational = 2/3
+    scala> (oneHalf / 7) + (1 - twoThirds)
+    res0: Rational = 17/42
 
 
 ### Constructing a Rational / 유리수 틀짜기
@@ -49,7 +51,7 @@ n 은 분자(numberator), d 는 분모(denominator)라 한다.
 유리수의 경우에는 분자와 분모가 되겠다.
 다음 코드로 디자인을 시작한다.
 
-	class Rational(n: Int, d: Int)
+    class Rational(n: Int, d: Int)
 
 이 코드는 자체로 완전하다.
 문제 없이 컴파일된다.
@@ -68,16 +70,16 @@ n 은 분자(numberator), d 는 분모(denominator)라 한다.
 
 클래스 몸체에 나오는 코드중 필드와 메서드 정의의 외의 코드들은 기본 생성자의 일부가 된다.
 
-	class Rational(n: Int, d: Int) {
-		println("Created "+ n +"/"+ d)
-	}
+    class Rational(n: Int, d: Int) {
+      println("Created "+ n +"/"+ d)
+    }
 
 위 코드에서 println 구문은 기본 생성자로 들어간다.
 Rational 인스턴스를 만들 때마다 println 구문이 실행된다.
 
-	scala> new Rational(1, 2)
-	Created 1/2
-	res0: Rational = Rational@90110a
+    scala> new Rational(1, 2)
+    Created 1/2
+    res0: Rational = Rational@90110a
 
 ### 참고
 여러분이 역자과 같다면 초반부터 큰 충격을 받았을 것이다.
@@ -121,9 +123,9 @@ toString 의 결과는 디버깅 출력, 로그 메시지, 테스트 실패 레�
 Rational 의 toString 에 의해 현재 제공되는 정보는 유리수 값과 거의 관련이 없기 때문에 별로 유용하지 않다.
 유용한 toString 이라면 분자와 분모의 값을 보여줄 수 있어야 한다.
 
-	class Rational(n: Int, d: Int) {
-		override def toString = n + "/" + d
-	}
+    class Rational(n: Int, d: Int) {
+      override def toString = n + "/" + d
+    }
 
 override 수정자는 슈퍼클래스에 정의된 메서드를 오버라이딩하고 있음을 나타낸다.
 이에 대해서는 10 장에서 다시 설명한다.
@@ -131,10 +133,10 @@ override 수정자는 슈퍼클래스에 정의된 메서드를 오버라이딩�
 Rational 의 숫자들이 제대로 출력되므로 이전 버전에서 클래스 몸체에 넣었던 디버깅용 println 문장을 삭제했다.
 인터프리터에서 새 Rational 의 기능을 테스트해볼 수 있다.
 
-	scala> val x = new Rational(1, 3)
-	x: Rational = 1/3
-	scala> val y = new Rational(5, 7)
-	y: Rational = 5/7
+    scala> val x = new Rational(1, 3)
+    x: Rational = 1/3
+    scala> val y = new Rational(5, 7)
+    y: Rational = 5/7
 
 
 ### Checking preconditions / 전제조건
@@ -142,8 +144,8 @@ Rational 의 숫자들이 제대로 출력되므로 이전 버전에서 클래�
 유리수 분모는 0 이 될 수 없다.
 하지만 현재는,,,
 
-	scala> new Rational(5, 0)
-	res1: Rational = 5/0
+    scala> new Rational(5, 0)
+    res1: Rational = 5/0
 
 OOP 의 장점중 하나는 데이타를 오브젝트로 감싸서 오브젝트의 일생동안 유효한 값을 유지할 수 있다는 것이다.
 Rational 과 같은 불변 오브젝트의 경우에는 오브젝트를 생성할 때 데이타가 유효한지 확인해야 한다.
@@ -153,11 +155,15 @@ d 인자로 0 이 오면 Rational 은 생성될 수 없다.
 전제조건은 메서드나 생성자에 전달된 인자에 대한 제약이다.
 호출하는 측은 이 요구사항을 만족시켜야 한다.
 
-	class Rational(n: Int, d: Int) {
-		require(d != 0)
-		override def toString = n +"/"+ d
-	}
+    class Rational(n: Int, d: Int) {
+      require(d != 0)
+      override def toString = n +"/"+ d
+    }
 
 require 메서드는 boolean 인자를 받는다.
 인자가 참이라면 아무일 없이 리턴한다.
 거짓이라면 IllegalArgumentException 을 던진다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

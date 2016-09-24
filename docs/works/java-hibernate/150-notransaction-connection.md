@@ -1,4 +1,6 @@
-NoTransaction Connection
+---
+title: No Transaction Connection
+---
 
 2010-10-01
 
@@ -12,3 +14,7 @@ JDBC 에서 JPA  로 올 때 헷갈리는 점 / 궁금한 점이 있는데
 Spring / JPA 에서 프로그래머가 하는 일은
 @Transaction 스프링 어노테이션으로 트랜잭션 선언을 하는 것입니다.
 트랜잭션 열고 닫으면 디비 열고 닫기는 JPA 엔진이 알아서.
+
+
+{:class="go-to-index"}
+[Java Hibernate](index)

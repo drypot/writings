@@ -1,4 +1,6 @@
-# Natural Key vs Surrogate Key
+---
+title: Natural Key vs Surrogate Key
+---
 
 2010-09-28
 
@@ -35,3 +37,7 @@ RDB 에서는 콤포지트 키가 자주 등장하므로 해당 행을 찾거나
 별도의 유니크 인덱스로 묶어줍니다.
 네, 오버헤드가 있을 수 있습니다만 기계에 일을 좀 더 주고 사람이 좀더 편해지자면 감수할만 하다고 봅니다.
 기계 부족 보다는 인력란이 심각하니까 인간 위주로 정책을 많이 도입할 필요가 있어 보입니다.
+
+
+{:class="go-to-index"}
+[Java Hibernate](index)

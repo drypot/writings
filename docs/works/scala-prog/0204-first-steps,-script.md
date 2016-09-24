@@ -1,16 +1,18 @@
-# First Steps, Script
+---
+title: First Steps, Script
+---
 
 2011-07-08 23:22
 
 스칼라는 큰 스케일의 시스템을 작성하기 위해 디자인했지만 스크립팅을 하는데도 유용하게 사용할 수 있다.
 다음을 hello.scala 라는 파일에 저장하고,
 
-	println("Hello, world, from a script!")
+    println("Hello, world, from a script!")
 
 실행해 보자.
 
-	$ scala hello.scala
-	Hello, world, from a script!
+    $ scala hello.scala
+    Hello, world, from a script!
 
 (유닉스라면 #! 을 사용해 scala 코멘드 없이 실행할 수 있다.)
 
@@ -23,13 +25,13 @@
 
 다음을 새로운 파일 helloarg.scala 에 저장하고,
 
-	// Say hello to the first argument
-	println("Hello, "+ args(0) +"!")
+    // Say hello to the first argument
+    println("Hello, "+ args(0) +"!")
 
 실행해 보자.
 
-	$ scala helloarg.scala planet
-	Hello, planet!
+    $ scala helloarg.scala planet
+    Hello, planet!
 
 여기서는 "planet" 을 쉘에서 인자로 전달했고 args(0) 을 통해 사용했다.
 
@@ -38,3 +40,7 @@
 
 스트링을 + 연산자로 합하는 것도 보라.
 "Hello, " + "world!" 는 "Hello, world!"가 될 것이다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

@@ -1,4 +1,6 @@
-# Bean Initialization with ServletContext
+---
+title: Bean Initialization with ServletContext
+---
 
 2010-11-30
 
@@ -11,12 +13,16 @@
 
 이런 경우는 `ApplicationContextAware` 를 구현해서 `WebApplicationContext` 를 받은후 `ServletContext` 를 구합니다.
 
-	@Component
-	public class App implements ApplicationContextAware {
-		private ServletContext servletContext;
-	
-		@Override
-		public void setApplicationContext(ApplicationContext applicationContext) {
-			servletContext = ((WebApplicationContext)applicationContext).getServletContext();
-		}
-	}
+    @Component
+    public class App implements ApplicationContextAware {
+      private ServletContext servletContext;
+    
+      @Override
+      public void setApplicationContext(ApplicationContext applicationContext) {
+        servletContext = ((WebApplicationContext)applicationContext).getServletContext();
+      }
+    }
+
+
+{:class="go-to-index"}
+[Java Spring](index)

@@ -1,15 +1,17 @@
-# First Steps, Function
+---
+title: First Steps, Function
+---
 
 2011-07-08 23:17
 
 펑션은 아래 와 같이 만들 수 있다.
 
-	scala>  def max(x: Int, y: Int): Int = {
-				if (x > y) x
-				else y
-			}
+    scala>  def max(x: Int, y: Int): Int = {
+          if (x > y) x
+          else y
+        }
 
-	max: (x: Int,y: Int)Int
+    max: (x: Int,y: Int)Int
 
 펑션 정의는 def 로 시작한다.
 예에서 펑션 이름은 max 이고 괄호 안에 콤마로 구분된 인자 리스트를 적는다.
@@ -36,21 +38,21 @@ F 세계의 관점에서 펑션은 값을 만드는 수식을 정의하는 것�
 더해서 펑션이 한 문장으로만 구성된다면 중괄호도 생략할 수 있다.
 그래서 max 를 다음과 같이 짧게 적을 수도 있다.
 
-	scala> def max2(x: Int, y: Int) = if (x > y) x else y
-	max2: (x: Int,y: Int)Int
+    scala> def max2(x: Int, y: Int) = if (x > y) x else y
+    max2: (x: Int,y: Int)Int
 
 하지만, 컴파일러가 요구하지 않는다고 해도 펑션 결과 타입을 명시적으로 기술하는 것은 좋은 습관이다.
 이렇게 함으로써 코드를 읽기 쉽게 만들 수 있다.
 
 펑션을 정의했으면 다음과 같이 호출한다.
 
-	scala> max(3, 5)
-	res4: Int = 5
+    scala> max(3, 5)
+    res4: Int = 5
 
 다음 예의 펑션은 인자도 받지 않고 의미있는 값도 돌려주지 않는다.
 
-	scala> def greet() = println("Hello, world!")
-	greet: ()Unit
+    scala> def greet() = println("Hello, world!")
+    greet: ()Unit
 
 greet() 펑션을 정의했을 때 인터프리터는 greet: ()Unit 으로 응답한다.
 Unit 은 greet 의 결과 타입이다.
@@ -68,3 +70,6 @@ greet() 에서 이 사이드 이펙트는 stdio 에  "Hello, world!" 를 출력�
 하지만 { } 를 써야하는 경우 자바 프로그래머들에게는 = 가 밉상으로 보일 수 있겠다.
 머리를 긁적거리게 만드는 것은 나중에 보게 되겠지만 = 를 빼버릴 수 있는 상황도 존재한다는 것이다. =,=
 
+
+{:class="go-to-index"}
+[Programming in Scala](index)

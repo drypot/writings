@@ -1,4 +1,6 @@
-# Classes and Objects, Class
+---
+title: Classes and Objects, Class
+---
 
 2011-07-14 20:39
 
@@ -9,13 +11,13 @@
 클래스를 정의하면 new 키워드로 오브젝트를 생성할 수 있다.
 아래는 클래스 정의 예다.
 
-	class ChecksumAccumulator {
-		// class definition goes here
-	}
+    class ChecksumAccumulator {
+      // class definition goes here
+    }
 
 오브젝트는 다음과 같이 생성한다.
 
-	new ChecksumAccumulator
+    new ChecksumAccumulator
 
 클래스 정의 안에는 필드와 메서드를 둔다.
 필드와 메서드를 합하여 멤버라고 한다.
@@ -35,31 +37,31 @@
 private 필드는 같은 클래스에 정의되어 있는 메서드에서만 접근할 수 있기 때문에
 오브젝트 상태를 변경할 수 있는 모든 코드를 클래스 내부에 격리할 수 있다.
 
-	class ChecksumAccumulator {
-		private var sum = 0
-	}
+    class ChecksumAccumulator {
+      private var sum = 0
+    }
 
 외부에서 sum 에 접근할 수 없게 되었다.
 
-	val acc = new ChecksumAccumulator
-	acc.sum = 5 // Won’t compile, because sum is private
+    val acc = new ChecksumAccumulator
+    acc.sum = 5 // Won’t compile, because sum is private
 
 자바에서는 공개용 멤버들을 public 이라 명시적으로 표시하지만
 스칼라에서는 접근 제한이 없는 멤버들은 자동으로 public 이 되니 따로 적을 필요가 없다.
 
 sum 을 수정하는 코드를 클래스 내부에 정의해 보았다.
 
-	class ChecksumAccumulator {
-		private var sum = 0
+    class ChecksumAccumulator {
+      private var sum = 0
 
-		def add(b: Byte): Unit = {
-			sum += b
-		}
+      def add(b: Byte): Unit = {
+        sum += b
+      }
 
-		def checksum(): Int = {
-			return ~(sum & 0xFF) + 1
-		}
-	}
+      def checksum(): Int = {
+        return ~(sum & 0xFF) + 1
+      }
+    }
 
 스칼라 메서드의 인자는 var 가 아니라 val 이다.
 인자값은 변경할 수 없다.
@@ -75,11 +77,11 @@ add 와 checksum 메서드를 좀더 간단하게 만들어 보자.
 메서드가 하나의 수식만 갖는다면 { } 를 생략할 수 있다.
 수식이 간단할 경우 def 와 같은 줄에 적는 것도 괜찮다.
 
-	class ChecksumAccumulator {
-		private var sum = 0
-		def add(b: Byte): Unit = sum += b
-		def checksum(): Int = ~(sum & 0xFF) + 1
-	}
+    class ChecksumAccumulator {
+      private var sum = 0
+      def add(b: Byte): Unit = sum += b
+      def checksum(): Int = ~(sum & 0xFF) + 1
+    }
 
 add 와 같이 리턴 타입이 Unit 인 메서드는 부수효과(side-effects)를 유발한다.
 부수효과는 메서드 외부의 상태를 변화시키거나 I/O 를 발생시킨다.
@@ -90,11 +92,11 @@ Unit 을 리턴하는 메서드는 리턴 타입 Unit 과 = 를 생략할 수 �
 이런 형태의 메서드는 프로시저 처럼 보인다.
 (파스칼 등에서 프로시저라는 단어가 사용되는데 리턴 타입 없이 오로지 부수효과를 만들기 위한 루틴을 지칭한다.)
 
-	class ChecksumAccumulator {
-		private var sum = 0
-		def add(b: Byte) { sum += b }
-		def checksum(): Int = ~(sum & 0xFF) + 1
-	}
+    class ChecksumAccumulator {
+      private var sum = 0
+      def add(b: Byte) { sum += b }
+      def checksum(): Int = ~(sum & 0xFF) + 1
+    }
 
 
 ### 참고
@@ -107,3 +109,7 @@ Unit 을 리턴하는 메서드는 리턴 타입 Unit 과 = 를 생략할 수 �
 스칼라에는 static 멤버가 없다.
 모든 것은 오브젝트를 통해서 한다.
 자바에서 static 멤버로 하던 일은 클래스 보조 오브젝트로 한다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

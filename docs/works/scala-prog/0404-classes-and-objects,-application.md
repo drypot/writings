@@ -1,4 +1,6 @@
-# Classes and Objects, Application
+---
+title: Classes and Objects, Application
+---
 
 2011-07-16 19:48
 
@@ -16,15 +18,15 @@
 main 메서드는 Array[String] 타입의 인자를 받는다.
 리턴 타입은 Unit 이다.
 
-	// In file Summer.scala
-	import ChecksumAccumulator.calculate
+    // In file Summer.scala
+    import ChecksumAccumulator.calculate
 
-	object Summer {
-		def main(args: Array[String]) {
-			for (arg <- args)
-				println(arg +": "+ calculate(arg))
-		}
-	}
+    object Summer {
+      def main(args: Array[String]) {
+        for (arg <- args)
+          println(arg +": "+ calculate(arg))
+      }
+    }
 
 싱글턴 이름은 Summer 다.
 Summer 는 main 메서드를 가지고 있고 어플리케이션 진입점으로 사용되는데 적합한 형식을 하고 있다.
@@ -47,11 +49,11 @@ assert 은 Predef.assert 을 의미한다.
 
 컴파일은 scalac 명령을 사용한다.
 
-	$ scalac ChecksumAccumulator.scala Summer.scala
+    $ scalac ChecksumAccumulator.scala Summer.scala
 
 컴파일을 반복적으로 할 경우 fsc 명령을 사용하는 것이 유용하다. 빠르다.
 
-	$ fsc ChecksumAccumulator.scala Summer.scala
+    $ fsc ChecksumAccumulator.scala Summer.scala
 
 fsc 는 fast Scala compiler 의 약자다.
 스칼라 컴파일러는 기동 과정에서 jar 파일들을 읽고 여러가지 초기화 작업을 하므로 시작 시간이 꽤 걸린다.
@@ -71,12 +73,12 @@ scala 명령에 *.scala 파일을 주면 스크립트로 인식해 컴파일 한
 싱글턴의 클래스 이름은 싱글턴 이름 뒤에 $ 가 붙는 규칙이 있다.
 싱글턴 Summer 의 클래스 이름은 Summer$ 다.
 
-	$ scala Summer of love
+    $ scala Summer of love
 
 결과
 
-	of: -213
-	love: -182
+    of: -213
+    love: -182
 
 
 ### The Application trait / 어플리케이션 트레잇
@@ -104,3 +106,7 @@ NetBeans 는 다중 모듈 프로젝트 간에 키워드 인덱스 업데이트�
 사실 Eclipse 스칼라 플러그인은 지난 1 년간 써보지 못했다.
 1 년 전에는 거의 쓸 수가 없을 지경이었다. 요즘은 계속 업그레이드 하고 있는 것 같다.
 어쨌든 스칼라 대중화에 이클립스 플러그인은 매우 중요하다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

@@ -1,4 +1,6 @@
-# First Steps, Functional Style
+---
+title: First Steps, Functional Style
+---
 
 2011-07-13 22:59
 
@@ -27,26 +29,26 @@ val 의 사용을 독려하긴 하겠지만 스칼라는 주어진 작업을 다
 스칼라의 균형잡힌 철학에 동의할지라도 var 를 지워나가는 것이 처음부터 쉬운 일은 아닐 것이다.
 2 장에서 소개했던 다음 절차적 코드를 보자.
 
-	def printArgs(args: Array[String]): Unit = {
-		var i = 0
-		while (i < args.length) {
-			println(args(i))
-			i += 1
-		}
-	}
+    def printArgs(args: Array[String]): Unit = {
+      var i = 0
+      while (i < args.length) {
+        println(args(i))
+        i += 1
+      }
+    }
 
 var 를 없애고 F 스타일로 바꾼 코드는 아래와 같다.
 
-	def printArgs(args: Array[String]): Unit = {
-		for (arg <- args)
-			println(arg)
-	}
+    def printArgs(args: Array[String]): Unit = {
+      for (arg <- args)
+        println(arg)
+    }
 
 또는 아래와 같다.
 
-	def printArgs(args: Array[String]): Unit = {
-		args.foreach(println)
-	}
+    def printArgs(args: Array[String]): Unit = {
+      args.foreach(println)
+    }
 
 이 예는 var 를 덜 썼을 때의 잇점을 보여준다.
 리펙터링된 F 코드는 절자적 코드보다 명확하고, 간결하고, 오류를 만들 소지가 적다.
@@ -60,7 +62,7 @@ var 를 없애고 F 스타일로 바꾼 코드는 아래와 같다.
 아무런 유용한 값을 리턴하지 않는 펑션이 세상에 먼가 차이를 만드는 유일한 방법은 부수효과를 발생시키는 길 뿐이다.
 보다 F 적인 접근 방법은 입력 받은 값을 프린팅을 위해 포멧하고 그냥 이 값을 리턴하는 것이다.
 
-	def formatArgs(args: Array[String]) = args.mkString("\n")
+    def formatArgs(args: Array[String]) = args.mkString("\n")
 
 이 코드는 부수효과도 없고 var 도 없다. 진정 펑셔널하다.
 
@@ -70,7 +72,7 @@ mkString 메서드는 어레이, 리스트, 셋, 맵 반복 가능한 모든 컬
 물론 formatArgs 가 결과를 출력하진 않는다.
 결과를 출력하려면 다음과 같이 println 을 호출한다.
 
-	println(formatArgs(args))
+    println(formatArgs(args))
 
 유용한 모든 프로그램은 어떤 식으로든 부수효과를 갖기 마련이다.
 부수효과를 통해서만 프로그램 밖의 세상에 가치를 제공할 수 있기 때문이다.
@@ -81,8 +83,8 @@ mkString 메서드는 어레이, 리스트, 셋, 맵 반복 가능한 모든 컬
 printArgs 메서드를 테스트하려면 테스트용 println 을 별도로 만들어서 출력을 기록하고 출력이 원하는 결과와 같은지 비교해야했을 것이다.
 이와는 반대로 formatArgs 는 그 결과만 확인함으로써 테스트를 마칠 수 있다.
 
-	val res = formatArgs(Array("zero", "one", "two"))
-	assert(res == "zero\none\ntwo")
+    val res = formatArgs(Array("zero", "one", "two"))
+    assert(res == "zero\none\ntwo")
 
 스칼라의 assert 메서드는 전달받은 불린 값이 false 라면 AssertionError 를 던진다.
 true 라면 조용히 리턴한다.
@@ -100,3 +102,7 @@ var 와 부수효과가 항상 나쁘기만한 것은 아니다.
 var, 가변 오브젝트, 부수효과는 특별한 필요가 있고 타당한 이유가 있을 때만 사용한다.
 
 7 장에서는 var 형 코드를 val 형 코드로 바꾸는 더 많은 예제를 볼 수 있다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

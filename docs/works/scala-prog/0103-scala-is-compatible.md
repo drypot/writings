@@ -1,4 +1,6 @@
-# Scala Is Compatible
+---
+title: Scala Is Compatible
+---
 
 2011-07-07 23:04
 
@@ -34,3 +36,7 @@ String 에 toInt 메서드가 적용되면 이 스트링을 StringOps 타입으�
 자바 코드에서 스칼라 코드를 호출할 수도 있다.
 하지만 스칼라는 자바보다 더 기능이 많은 언어이어서 고급 기능들중 일부는 자바 코드쪽으로 노출될 때 다소 복잡해 보일 수 있다.
 이에 대해서는 31 장에서 자세히 설명한다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

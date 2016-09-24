@@ -1,4 +1,6 @@
-# A Scalable Language
+---
+title: A Scalable Language
+---
 
 2011-07-07 17:09
 
@@ -35,9 +37,9 @@ OOP 적인 구문은 보다 큰 시스템 구조를 만들고  새로운 요구�
 
 다음 작은 예제를 보자.
 
-	var capital = Map("US" -> "Washington", "France" -> "Paris")
-	capital += ("Japan" -> "Tokyo")
-	println(capital("France"))
+    var capital = Map("US" -> "Washington", "France" -> "Paris")
+    capital += ("Japan" -> "Tokyo")
+    println(capital("France"))
 
 이 프로그램은 나라와 수도 이름으로 된 맵을 만들고, Japan 과 Tokyo 조합을 추가하고, France 에 연결된 수도를 프린트한다.
 
@@ -63,8 +65,12 @@ SynchronizedMap trait 을 섞어서(mixing in) 맵이 thread-safe 해야함을 �
 ### Growing new type / 새로운 타입 생성
 
 Eric Raymond 는 소프트웨어 개발을 성당과 시장 (the cathedral and bazaar) 이라는 두 개의 비유로 묘사하였다.
-성당과 시장 : <http://www.catb.org/~esr/writings/cathedral-bazaar/>
-성당과 시장 한글 번역본 : <http://wiki.kldp.org/wiki.php/DocbookSgml/Cathedral-Bazaar-TRANS>
+
+성당과 시장 :\\
+<http://www.catb.org/~esr/writings/cathedral-bazaar/>{:target="_blank"}
+
+성당과 시장 한글 번역본 :\\
+<http://wiki.kldp.org/wiki.php/DocbookSgml/Cathedral-Bazaar-TRANS>{:target="_blank"}
 
 성당은 짓는데 오래 걸리는 완벽한 빌딩을 뜻한다.
 성당은 한번 완공이 되면 변하지 않고 오랜 시간동안 유지된다.
@@ -83,12 +89,12 @@ Guy Steele 은 "growing a language" 라는 강연에서 똑같은 개념을 언�
 스칼라에서 이런 정수 타입은 scala.BigInt 클래스다.
 아래는 입력된 정수 값의 팩토리얼을 계산하는 메서드다.
 
-	def factorial(x: BigInt): BigInt =
-		if (x == 0) 1 else x * factorial(x - 1)
+    def factorial(x: BigInt): BigInt =
+      if (x == 0) 1 else x * factorial(x - 1)
 
 factorial(30) 을 실행한 결과는 다음과 같다.
 
-	265252859812191058636308480000000
+    265252859812191058636308480000000
 
 정수 상수와 * , - 같은 연산자를 쓰고 있기 때문에 BigInt 는 언어의 내장 타입 같아 보인다.
 하지만 BigInt 는 스칼라 기본 라이브러리에 정의되어 있는 클래스일 뿐이다.
@@ -98,13 +104,13 @@ factorial(30) 을 실행한 결과는 다음과 같다.
 물론, 자바 클래스를 바로 사용할 수도 있다.
 하지만 자바의 타입들은 언어에 내장되어 있다는 느낌을 주지 않기 때문에 별로 산뜻하지 못하다.
 
-	import java.math.BigInteger
+    import java.math.BigInteger
 
-	def factorial(x: BigInteger): BigInteger =
-		if (x == BigInteger.ZERO)
-			BigInteger.ONE
-		else
-			x.multiply(factorial(x.subtract(BigInteger.ONE)))
+    def factorial(x: BigInteger): BigInteger =
+      if (x == BigInteger.ZERO)
+        BigInteger.ONE
+      else
+        x.multiply(factorial(x.subtract(BigInteger.ONE)))
 
 BigInt 는 다른 많은 숫자 타입들중 한 가지일 뿐이다.
 big decimals, complex numbers, rational numbers, confidence intervals, polynomials 등 목록은 길다.
@@ -145,18 +151,18 @@ big decimals, complex numbers, rational numbers, confidence intervals, polynomia
 느낌표로 표시되는 전송 작업은 엑터에 메시지를 전송한다.
 아래는 recipient 라는 엑터에 메시지를 전달하는 예다.
 
-	recipient ! msg
+    recipient ! msg
 
 전송은 비동기적이다.
 즉, 전송하는 액터는 메시지가 수신되고 처리되고 답이 돌아오는 것을 기다리지 않고 메시지 전송 직후 다음 행으로 진행한다.
 모든 액터는 수신되는 메시지가 들어갈 메일박스를 가지고 있다.
 액터는 수신 블럭 (receive block) 을 통해 메일박스에 도착한 메시지를 처리한다.
 
-	receive {
-		case Msg1 => ... // handle Msg1
-		case Msg2 => ... // handle Msg2
-		// ...
-	}
+    receive {
+      case Msg1 => ... // handle Msg1
+      case Msg2 => ... // handle Msg2
+      // ...
+    }
 
 수신 블럭은 메시지 패턴으로 메일 박스를 조회하는 몇 개의 case 문들로 구성된다.
 case 에 부합하는 첫 번째 메일박스 메시지가 선택되면 메시지를 가지고 해당하는 코드를 실행한다.
@@ -164,15 +170,15 @@ case 에 부합하는 첫 번째 메일박스 메시지가 선택되면 메시�
 
 다음은 간단한 체크섬 계산기 서비스를 구현한 스칼라 액터의 예다.
 
-	actor {
-		var sum = 0
-		loop {
-			receive {
-				case Data(bytes)			=> sum += hash(bytes)
-				case GetSum(requester)	=> requester ! sum
-			}
-		}
-	}
+    actor {
+      var sum = 0
+      loop {
+        receive {
+          case Data(bytes)      => sum += hash(bytes)
+          case GetSum(requester)  => requester ! sum
+        }
+      }
+    }
 
 먼저 지역 변수 sum 을 0 으로 초기화한다.
 loop 문은 안의 receive 문을 반복 실행한다.
@@ -203,3 +209,7 @@ actor, loop, receive 가 언어에 내장된 while 이나 for 루프 처럼 보�
 
 참고, 병렬처리와 관련해 액터에서 핵심적인 것은 메시지 패싱이나 패턴 매칭이 아니라 비동기적으로 동작한다는 부분이다.
 메시지 패싱은 비동기 컨트롤을 구현하기 위한 수단중 하나이다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

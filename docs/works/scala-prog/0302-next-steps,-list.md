@@ -1,4 +1,6 @@
-# First Steps, List
+---
+title: First Steps, List
+---
 
 2011-07-12 01:28
 
@@ -21,7 +23,7 @@ Array[String] 과 비슷하게 List[String] 은 스트링만 가질 수 있다.
 
 리스트를 생성하는 법은 쉽다.
 
-	val oneTwoThree = List(1, 2, 3)
+    val oneTwoThree = List(1, 2, 3)
 
 oneTwoThree val 은 1, 2, 3 원소로 초기화된 List[Int] 타입 오브젝트다.
 List.apply() 펑션이 준비되어 있어서 new List 로 오브젝트를 생성하고 별도로 초기화하는 번거로운 과정은 필요없다.
@@ -30,27 +32,27 @@ List.apply() 펑션이 준비되어 있어서 new List 로 오브젝트를 생�
 
 리스트들을 결합하는 ':::' 이란 이름의 메서드가 있다.
 
-	val oneTwo = List(1, 2)
-	val threeFour = List(3, 4)
-	val oneTwoThreeFour = oneTwo ::: threeFour
-	println(oneTwo + " and " + threeFour + " were not mutated.")
-	println("Thus, " + oneTwoThreeFour + " is a new list.")
+    val oneTwo = List(1, 2)
+    val threeFour = List(3, 4)
+    val oneTwoThreeFour = oneTwo ::: threeFour
+    println(oneTwo + " and " + threeFour + " were not mutated.")
+    println("Thus, " + oneTwoThreeFour + " is a new list.")
 
 실행 결과는
 
-	List(1, 2) and List(3, 4) were not mutated.
-	Thus, List(1, 2, 3, 4) is a new list.
+    List(1, 2) and List(3, 4) were not mutated.
+    Thus, List(1, 2, 3, 4) is a new list.
 
 또 다른 메서드로 :: 이 있다. 이것은 cons 라고 읽는다. (리스프 문화로부터의 영향)
 cons 는 리스트 앞에 새로운 원소를 연결한 리스트를 리턴한다.
 
-	val twoThree = List(2, 3)
-	val oneTwoThree = 1 :: twoThree
-	println(oneTwoThree)
+    val twoThree = List(2, 3)
+    val oneTwoThree = 1 :: twoThree
+    println(oneTwoThree)
 
 결과는
 
-	List(1, 2, 3)
+    List(1, 2, 3)
 
 1 :: twoThree 에서 :: 는 1 에 적용되는 메서드가 아니라twoThree 의 메서드다. 깜놀?
 스칼라의 독특한 규칙이 또 하나 등장한다.
@@ -59,8 +61,8 @@ cons 는 리스트 앞에 새로운 원소를 연결한 리스트를 리턴한�
 
 List(1, 2, 3) 을 다음과 같이 만들 수도 있다.
 
-	val oneTwoThree = 1 :: 2 :: 3 :: Nil
-	println(oneTwoThree)
+    val oneTwoThree = 1 :: 2 :: 3 :: Nil
+    println(oneTwoThree)
 
 여기서 Nil 은 빈 리스트 오브젝트다.
 Nil 을 맨 뒤에 두는 이유는 :: 메서드가 리스트 오브젝트에 정의되어 있기 때문이다.
@@ -129,8 +131,12 @@ List 는 너무 자주 사용되기 때문에 무려 scala 패키지에 올라�
 사실 List 포함 다른 모든 컬렉션 라이브러리는 scala.collection 패키지에 있다.
 scala 패키지에 들어있는 List 클래스와 List 보조 오브젝트는 scala.collection.immutable.List 의 앨리어스다.
 
-<http://lampsvn.epfl.ch/trac/scala/browser/scala/trunk/src/library/scala/package.scala>
+<http://lampsvn.epfl.ch/trac/scala/browser/scala/trunk/src/library/scala/package.scala>{:target="_blank"}
 
-	type List[+A] = scala.collection.immutable.List[A]
-	val List = scala.collection.immutable.List
-	val Nil = scala.collection.immutable.Nil
+    type List[+A] = scala.collection.immutable.List[A]
+    val List = scala.collection.immutable.List
+    val Nil = scala.collection.immutable.Nil
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

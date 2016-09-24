@@ -1,16 +1,18 @@
-# Cascasde
+---
+title: Cascasde
+---
 
 2010-10-01
 
 엔터티들을 연관짓는 @OneToOne, @OneToMany 류 어노테이션에 Cascade 엘리먼트를 추가할 수 있습니다.
 디비의 foreign key 개념에 등장하는 그 Cascade 와 같습니다.
 
-	@OneToOne( cascade = CascadeType.ALL )
-	@PrimaryKeyJoinColumn
-	public Heart getHeart() { ... }
-	
-	@OneToMany( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
-	public Collection<Employer> getEmployers()
+    @OneToOne( cascade = CascadeType.ALL )
+    @PrimaryKeyJoinColumn
+    public Heart getHeart() { ... }
+    
+    @OneToMany( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+    public Collection<Employer> getEmployers()
 
 임의의 엔터티에 오퍼레이션이 가해질 때
 연관 엔터티까지 줄줄이 오퍼레이션을 가할 것인지 지정합니다.
@@ -22,10 +24,13 @@
 
 지정할 수 있는 케스케이딩 타입에는 아래와 같은 것들이 있습니다.
 
-	CascadeType.PERSIST
-	CascadeType.MERGE
-	CascadeType.REMOVE
-	CascadeType.REFRESH
-	CascadeType.DETACH
-	CascadeType.ALL
-	
+    CascadeType.PERSIST
+    CascadeType.MERGE
+    CascadeType.REMOVE
+    CascadeType.REFRESH
+    CascadeType.DETACH
+    CascadeType.ALL
+
+
+{:class="go-to-index"}
+[Java Hibernate](index)

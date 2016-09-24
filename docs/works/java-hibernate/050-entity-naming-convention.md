@@ -1,4 +1,6 @@
-# Entity Naming Convention
+---
+title: Entity Naming Convention
+---
 
 2010-09-17
 
@@ -19,20 +21,20 @@ JPA 에서는 사실 이런 케이스 무시를 좀 권장하는 듯한 느낌�
 전에 제가 적었던 'Hello, Spring + Hibernate' 라는 글에서는 `ImprovedNamingStrategy` 를 사용합니다.
 자바식 명명을 모두 소문자 + 언더라인 들어간 MySql 문화의 이름으로 바꿔줍니다.
 
-	Account class -> account table
-	AccountOrder class -> account_order table
-	accountId field -> account_id column
+    Account class -> account table
+    AccountOrder class -> account_order table
+    accountId field -> account_id column
 
 해당 하이버네이트 설정은 스프링 설정파일을 통해서 하게 되는데,
 스프링 설정파일의 `EntityManagerFactoryBean` 정의하는데 들어가 있습니다.
 
-	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="jpaProperties">
-			<props>
-				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-			</props>
-		</property>
-	</bean>
+    <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="jpaProperties">
+        <props>
+          <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+        </props>
+      </property>
+    </bean>
 
 자바식 이름을 디비에 까지 적용하는 것이 어떨까하는 생각이 들 수도 있는데요,
 자바식 이름을 자바에서 쓰면 이쁜데,
@@ -52,3 +54,7 @@ MySQL 커뮤니티에서는 테이블 이름에서 단어 구분을 위해 언�
 
 MySQL 을 안 쓰신다면 스프링의 엔터티메니저 설정에서 ImprovedNamingStrategy 등록 설정을 빼버리시고
 언더라인 없이 쓰셔도 됩니다.
+
+
+{:class="go-to-index"}
+[Java Hibernate](index)

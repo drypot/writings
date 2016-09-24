@@ -1,4 +1,6 @@
-# Type Mapping
+---
+title: Type Mapping
+---
 
 2010-09-27
 
@@ -15,7 +17,11 @@
 
 어쨌든, 프레임웍에서는 유연성을 강조할 수 밖에 없으니 개발자가 알아야 할 것이 좀 늘어납니다.
 
-<http://docs.jboss.org/hibernate/stable/core/reference/en/html/mapping.html#mapping-types-basictypes>
+<http://docs.jboss.org/hibernate/stable/core/reference/en/html/mapping.html#mapping-types-basictypes>{:target="_blank"}
 
 레퍼런스의 해당 섹션인데 저거 가지고는 좀 부족하고 직접 써보면서 내공이 좀 쌓여야 할 것 같습니다.
 `MySQLDialect` 가 하이버네이트 mapping type 을 어떻게 해석하는지 이건 공식 도큐먼트가 안 보이는 것 같습니다.
+
+
+{:class="go-to-index"}
+[Java Hibernate](index)

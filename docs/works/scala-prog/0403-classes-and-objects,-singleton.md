@@ -1,4 +1,6 @@
-# Classes and Objects, Singleton
+---
+title: Classes and Objects, Singleton
+---
 
 2011-07-15 02:36
 
@@ -16,24 +18,24 @@
 싱글턴의 정의는 클래스 정의와 비슷하다.
 단지 class 키워드 대신 object 키워드를 사용한다.
 
-	// In file ChecksumAccumulator.scala
-	import scala.collection.mutable.Map
+    // In file ChecksumAccumulator.scala
+    import scala.collection.mutable.Map
 
-	object ChecksumAccumulator {
-		private val cache = Map[String, Int]()
+    object ChecksumAccumulator {
+      private val cache = Map[String, Int]()
 
-		def calculate(s: String): Int =
-			if (cache.contains(s))
-				cache(s)
-			else {
-				val acc = new ChecksumAccumulator
-				for (c <- s)
-					acc.add(c.toByte)
-				val cs = acc.checksum()
-				cache += (s -> cs)
-				cs
-			}
-	}
+      def calculate(s: String): Int =
+        if (cache.contains(s))
+          cache(s)
+        else {
+          val acc = new ChecksumAccumulator
+          for (c <- s)
+            acc.add(c.toByte)
+          val cs = acc.checksum()
+          cache += (s -> cs)
+          cs
+        }
+    }
 
 여기서 싱글턴의 이름은 ChecksumAccumulator 이다.
 대문자로 시작했지만 이것은 오브젝트다.
@@ -58,7 +60,7 @@
 
 싱글턴의 메서드는 아래와 같이 호출한다.
 
-	ChecksumAccumulator.calculate("Every value is an object.")
+    ChecksumAccumulator.calculate("Every value is an object.")
 
 싱글턴은 자바의 static 메서드에 비해 다른 클래스와 트레잇을 계승할 수 있다는 장점을 가진다.
 자바의 static 방식으로는 코드를 계승할 수가 없다.
@@ -80,3 +82,7 @@ JVM 레벨에서 보면 싱글턴 오브젝트는 합성된 클래스의 static 
 처음 스칼라 싱글턴을 만났을 때 이해도 잘 안 되고 내부 구현에 대한 명확한 설명이 없어서 깝깝했던 기억이 있다.
 그래서 이 섹션은 거의 내 맘대로 썼다. =o=
 내용이 잘 전달되지 않았다면 그건 원전 저자들 책임이 아니고 내 책임이다. =,=
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

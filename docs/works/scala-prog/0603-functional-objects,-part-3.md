@@ -1,33 +1,35 @@
-# Functional Objects, Part 3
+---
+title: Functional Objects, Part 3
+---
 
 2011-07-21 01:21
 
 ### Private fields and methods / 비공개 필드와 메서드
 
-	scala> new Rational(66, 42)
-	res6: Rational = 66/42
+    scala> new Rational(66, 42)
+    res6: Rational = 66/42
 
 약분이 되지 않는다!
 66/42 를 입력했을 때 11/7 이 되면 좋을 것이다.
 약분은 분자와 분모를 최대 공약수(greatest common divisor)로 나누면 된다.
 
-	class Rational(n: Int, d: Int) {
-		require(d != 0)
+    class Rational(n: Int, d: Int) {
+      require(d != 0)
 
-		private val g = gcd(n.abs, d.abs)
+      private val g = gcd(n.abs, d.abs)
 
-		val numer = n / g
-		val denom = d / g
-		def this(n: Int) = this(n, 1)
-		def add(that: Rational): Rational =
-			new Rational(
-				numer * that.denom + that.numer * denom,
-				denom * that.denom
-			)
-		override def toString = numer +"/"+ denom
+      val numer = n / g
+      val denom = d / g
+      def this(n: Int) = this(n, 1)
+      def add(that: Rational): Rational =
+        new Rational(
+          numer * that.denom + that.numer * denom,
+          denom * that.denom
+        )
+      override def toString = numer +"/"+ denom
 
-		private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
-	}
+      private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
+    }
 
 private 키워드로 시작하면 비공개 멤버를 정의할 수 있다.
 
@@ -39,8 +41,8 @@ private 키워드로 시작하면 비공개 멤버를 정의할 수 있다.
 
 컴파일러는 세 개 필드의 초기화 코드를 보이는 순서대로 기본 생성자에 모은다.
 
-	scala> new Rational(66, 42)
-	res7: Rational = 11/7
+    scala> new Rational(66, 42)
+    res7: Rational = 11/7
 
 
 ### Defining operators / 오퍼레이터 정의하기
@@ -48,28 +50,28 @@ private 키워드로 시작하면 비공개 멤버를 정의할 수 있다.
 x + y 가 x.add(y) 나 x add y 보다 나아 보인다.
 오퍼레이터 메서드를 추가해 보자.
 
-	class Rational(n: Int, d: Int) {
-		require(d != 0)
-		private val g = gcd(n.abs, d.abs)
-		val numer = n / g
-		val denom = d / g
-		def this(n: Int) = this(n, 1)
+    class Rational(n: Int, d: Int) {
+      require(d != 0)
+      private val g = gcd(n.abs, d.abs)
+      val numer = n / g
+      val denom = d / g
+      def this(n: Int) = this(n, 1)
 
-		def + (that: Rational): Rational = new Rational(numer * that.denom + that.numer * denom, denom * that.denom)
-		def * (that: Rational): Rational = new Rational(numer * that.numer, denom * that.denom)
+      def + (that: Rational): Rational = new Rational(numer * that.denom + that.numer * denom, denom * that.denom)
+      def * (that: Rational): Rational = new Rational(numer * that.numer, denom * that.denom)
 
-		override def toString = numer +"/"+ denom
-		private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
-	}
+      override def toString = numer +"/"+ denom
+      private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
+    }
 
-+ 와 * 메서드를 정의 했다.
+\+ 와 * 메서드를 정의 했다.
 
-	scala> val x = new Rational(1, 2)
-	x: Rational = 1/2
-	scala> val y = new Rational(2, 3)
-	y: Rational = 2/3
-	scala> x + y
-	res8: Rational = 7/6
+    scala> val x = new Rational(1, 2)
+    x: Rational = 1/2
+    scala> val y = new Rational(2, 3)
+    y: Rational = 2/3
+    scala> x + y
+    res8: Rational = 7/6
 
 
 ### Identifiers in Scala / 스칼라의 식별자
@@ -122,54 +124,58 @@ Thread.`yield`() 로 적는다.
 
 (오버로딩에 관한 상식적인 설명 생량. =,=)
 
-	class Rational(n: Int, d: Int) {
-		require(d != 0)
-		private val g = gcd(n.abs, d.abs)
-		val numer = n / g
-		val denom = d / g
+    class Rational(n: Int, d: Int) {
+      require(d != 0)
+      private val g = gcd(n.abs, d.abs)
+      val numer = n / g
+      val denom = d / g
 
-		def this(n: Int) = this (n, 1)
+      def this(n: Int) = this (n, 1)
 
-		def +(that: Rational): Rational =
-			new Rational(
-				numer * that.denom + that.numer * denom,
-				denom * that.denom
-			)
+      def +(that: Rational): Rational =
+        new Rational(
+          numer * that.denom + that.numer * denom,
+          denom * that.denom
+        )
 
-		def +(i: Int): Rational =
-			new Rational(numer + i * denom, denom)
+      def +(i: Int): Rational =
+        new Rational(numer + i * denom, denom)
 
-		def -(that: Rational): Rational =
-			new Rational(
-				numer * that.denom - that.numer * denom,
-				denom * that.denom
-			)
+      def -(that: Rational): Rational =
+        new Rational(
+          numer * that.denom - that.numer * denom,
+          denom * that.denom
+        )
 
-		def -(i: Int): Rational =
-			new Rational(numer - i * denom, denom)
+      def -(i: Int): Rational =
+        new Rational(numer - i * denom, denom)
 
-		def *(that: Rational): Rational =
-			new Rational(numer * that.numer, denom * that.denom)
+      def *(that: Rational): Rational =
+        new Rational(numer * that.numer, denom * that.denom)
 
-		def *(i: Int): Rational =
-			new Rational(numer * i, denom)
+      def *(i: Int): Rational =
+        new Rational(numer * i, denom)
 
-		def /(that: Rational): Rational =
-			new Rational(numer * that.denom, denom * that.numer)
+      def /(that: Rational): Rational =
+        new Rational(numer * that.denom, denom * that.numer)
 
-		def /(i: Int): Rational =
-			new Rational(numer, denom * i)
+      def /(i: Int): Rational =
+        new Rational(numer, denom * i)
 
-		override def toString = numer + "/" + denom
+      override def toString = numer + "/" + denom
 
-		private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
-	}
+      private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
+    }
 
 실행
 
-	scala> val x = new Rational(2, 3)
-	x: Rational = 2/3
-	scala> x * x
-	res13: Rational = 4/9
-	scala> x * 2
-	res14: Rational = 4/3
+    scala> val x = new Rational(2, 3)
+    x: Rational = 2/3
+    scala> x * x
+    res13: Rational = 4/9
+    scala> x * 2
+    res14: Rational = 4/3
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

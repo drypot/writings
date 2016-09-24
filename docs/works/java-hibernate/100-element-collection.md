@@ -1,4 +1,6 @@
-# Element Collection
+---
+title: Element Collection
+---
 
 2010-09-30
 
@@ -14,15 +16,15 @@ Role 속성을 숫자 하나나 스트링으로 처리할 경우나 레코드의
 
 `nick_name` 테이블에 `account_id`, `nick_name` 컬럼이 있다고 하면,
 
-	@Entity
-	public class Account {
-	
-		@ElementCollection
-		@CollectionTable(name = "nick_name", joinColumns = @JoinColumn(name = "account_id"))
-		@Column(name = "nick_name")
-		private Set<String> nickNames = new HashSet<String>();
-	
-	}
+    @Entity
+    public class Account {
+    
+      @ElementCollection
+      @CollectionTable(name = "nick_name", joinColumns = @JoinColumn(name = "account_id"))
+      @Column(name = "nick_name")
+      private Set<String> nickNames = new HashSet<String>();
+    
+    }
 
 먼저 엔리먼트 컬렉션 어노테이션이 붙었고요.
 어떤 테이블을 사용할 것인가를 `CollectionTable` 로 정의하였습니다. foreign key 이름도 적어 주었습니다.
@@ -31,15 +33,19 @@ Role 속성을 숫자 하나나 스트링으로 처리할 경우나 레코드의
 
 컬렉션 데이터 추가하는 법
 
-	account2 = new Account();
-	account2.getNickNames().add("nick2a");
-	account2.getNickNames().add("nick2b");
-	em.persist(account2);
+    account2 = new Account();
+    account2.getNickNames().add("nick2a");
+    account2.getNickNames().add("nick2b");
+    em.persist(account2);
 
 가져다 쓰는 법
 
-	Account a2 = em.find(Account.class, account2.getId());
-	assertThat(a2.getNickNames().size(), is(2));
-	assertThat(a2.getNickNames().contains("nick2a"), is(true));
-	assertThat(a2.getNickNames().contains("nick2b"), is(true));
-	assertThat(a2.getNickNames().contains("nick3a"), is(false));
+    Account a2 = em.find(Account.class, account2.getId());
+    assertThat(a2.getNickNames().size(), is(2));
+    assertThat(a2.getNickNames().contains("nick2a"), is(true));
+    assertThat(a2.getNickNames().contains("nick2b"), is(true));
+    assertThat(a2.getNickNames().contains("nick3a"), is(false));
+
+
+{:class="go-to-index"}
+[Java Hibernate](index)

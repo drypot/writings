@@ -1,4 +1,6 @@
-# Programming In Scala 번역
+---
+title: Programming In Scala
+---
 
 2011-07-07
 
@@ -18,3 +20,11 @@ Programming in Scala 의 꼼꼼한 완역은 다른 능력있는 분의 작업�
 고백하건데 나도 현재 스칼라를 현업에서 쓰지 못하고 있다.
 현업에 적용하기에 현실적인 걸림돌들이 있는 것은 맞다.
 하지만 이 멋진 언어를 만나는 것은 그 자체로 흥미진진한 여행이 될 것이다.
+
+### 업데이트
+
+2014 년에 이 책의 번역서가 출간되었습니다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

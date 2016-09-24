@@ -1,4 +1,6 @@
-#What Makes Scala Scalable?
+---
+title: What Makes Scala Scalable?
+---
 
 2011-07-07 18:54
 
@@ -150,3 +152,7 @@ F 언어들은 변하지 않는 데이터 스트럭쳐와 referentially transpar
 referentially transparency 를 깨는 방법은 쉽다.
 전역 변수를 쓰면 된다.
 아니면 디스크나 네트웍 IO 를 삽입하는 것도 좋겠다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

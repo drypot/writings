@@ -1,4 +1,6 @@
-# First Steps, Tuple
+---
+title: First Steps, Tuple
+---
 
 2011-07-12 21:33
 
@@ -10,14 +12,14 @@
 자바에서 이런 일을 하려면 리턴 오브젝트들을 담기 위한 클래스를 만들어야 했겠지만 스칼라에서는 간단히 튜플을 쓰면 된다.
 튜플은 만들기 쉽다. 튜플에 담으려는 오브젝트들을 ( ) 로 감싸기만 하면 된다.
 
-	val pair = (99, "Luftballons")
-	println(pair._1)
-	println(pair._2)
+    val pair = (99, "Luftballons")
+    println(pair._1)
+    println(pair._2)
 
 결과
 
-	99
-	Luftballons
+    99
+    Luftballons
 
 튜플의 원소를 사용하려면 _N 방식의 구문을 사용한다. 여기서 N 은 숫자이고 1 부터 시작한다.
 스칼라는 튜플의 타입을 Tuple2[Int, String] 으로 추론한다.
@@ -33,3 +35,7 @@
 튜플의 원소 타입이 모두 달라서 pair(n) 의 고정 타입을 결정할 수 없기 때문이다.
 
 원소 번호는 Haskell, ML 등 정적 타입 튜플을 사용하고 있는 다른 언어의 전통을 따라 0 이 아닌 1 부터 시작한다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

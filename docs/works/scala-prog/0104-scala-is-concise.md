@@ -1,4 +1,6 @@
-# Scala Is Concise
+---
+title: Scala Is Concise
+---
 
 2011-07-07 23:23
 
@@ -17,19 +19,19 @@
 
 아래는 자바에서 클래스와 생성자를 사용하는 방법이다.
 
-	// this is Java
-	class MyClass {
-		private int index;
-		private String name;
-		public MyClass(int index, String name) {
-			this.index = index;
-			this.name = name;
-		}
-	}
+    // this is Java
+    class MyClass {
+      private int index;
+      private String name;
+      public MyClass(int index, String name) {
+        this.index = index;
+        this.name = name;
+      }
+    }
 
 스칼라에서는 이것을 다음과 같이 한다.
 
-	class MyClass(index: Int, name: String)
+    class MyClass(index: Int, name: String)
 
 이 코드는 장황한 자바 버전과 근본적으로 같은 기능을 한다.
 클래스 이름에 인자를 붙이는 이 괴상한 아이디어를 처음엔 혐오할 수 있다.
@@ -45,3 +47,7 @@ F# 에서도 이렇게 하지만 스칼라에서 더 편리하다.
 스칼라는 강력한 라이브러리를 만들 수 있는 도구들를 제공하므로 반복적인 양식을 취합하고 분리해 낼 수 있다.
 클래스의 서로 다른 측면들을 트레잇으로 분리해서 이들을 유연한 방법으로 섞어 쓸 수 있다.
 메서드는 펑션 리터럴을 받을 수 있어서 이것으로 사용자 컨트롤 구문을 정의할 수 있다.
+
+
+{:class="go-to-index"}
+[Programming in Scala](index)

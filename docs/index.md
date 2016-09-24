@@ -9,8 +9,6 @@ class: page-content-index
 - [MDADM](works/linux/mdadm)
 - [Git ABC](works/git-abc)
 - [jQuery ABC](works/jquery-abc)
-{% comment %}
 - [Programming in Scala](works/scala-prog)
 - [Java Spring](works/java-spring)
 - [Java Hibernate](works/java-hibernate)
-{% endcomment %}

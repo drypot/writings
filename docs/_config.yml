@@ -18,6 +18,7 @@ email: drypot@gmail.com
 description: Some Technical Writings for Software Development
 url: "https://drypot.github.io" # the base hostname & protocol for your site
 baseurl: "/writings" # the subpath of your site, e.g. /blog
+port: 4001
 twitter_username: drypot
 github_username: drypot
 

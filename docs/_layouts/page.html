@@ -15,24 +15,22 @@
   </head>
   <body>
     {% if page.url != '/' %}
-      <div class="section page-header">
-        <div class="page-header-site-name"><a href="{{ site.baseurl }}/">{{ site.title }}</a></div>
+      <div class="page-header">
+        <div class="site-name"><a href="{{ site.baseurl }}/">{{ site.title }}</a></div>
       </div>
     {% endif %}
-    <div class="section page-title">
+    <div class="page-title">
       <h1>{{ page.title }}</h1>
     </div>
-    <div class="section page-content {{ page.class }}">
+    <div class="page-content {{ page.class }}">
       {{ content }}
     </div>
-    <div class="section page-footer">
-      <div class="about-list">
-        <ul class="list-inline">
-          <li><a href="https://drypot.github.io" target=_blank>About</a></li>
-          <li><a href="https://github.com/drypot/writings" target=_blank>View on GitHub</a></li>
-        </ul>
-      </div>
-      <div class="page-header-site-name"><a href="{{ site.baseurl }}/">{{ site.title }}</a></div>
+    <div class="page-footer">
+      <ul>
+        <li><a href="https://drypot.github.io" target=_blank>About</a></li>
+        <li><a href="https://github.com/drypot/writings" target=_blank>View on GitHub</a></li>
+      </ul>
+      <div class="site-name"><a href="{{ site.baseurl }}/">{{ site.title }}</a></div>
     </div>
   </body>
 </html>

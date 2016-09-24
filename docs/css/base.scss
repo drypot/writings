@@ -1,13 +1,16 @@
 ---
 ---
+
+// macro
+
 $color: #333;
 $dim-color: lighten($color, 50%);
 $line-color: lighten($color, 70%);
 
-$margin: 3em;
 $width: 720px;
-
-$form-width: 480px;
+$side-space: 8px;
+$layout-margin: 5rem;
+$margin: 3rem;
 
 @mixin narrow {
   @media (min-width: 768px) {
@@ -33,13 +36,10 @@ $form-width: 480px;
   }
 }
 
-// basic layout
+// base
 
 html {
-}
-
-body {
-  font-size: 14px;
+  font-size: 16px;
   @include narrow {
     font-size: 16px;
   }
@@ -49,79 +49,47 @@ body {
   @include wide {
     font-size: 20px;
   }
-  //font-size: 1em;
+}
+
+body {
+  font-size: 1rem;
   font-family: serif;
   line-height: 160%;
   color: $color;
+  text-align: center;
+}
+
+h1, h2, h3, p, pre, hr, ul {
+  margin: 0.8rem $side-space;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-top: $layout-margin;
+  margin-bottom: $layout-margin;
 }
 
 h2 {
-  font-size: 1.8em;
-  margin: 1.5em 0em 0.7em;
+  font-size: 1.8rem;
+  margin-top: 3rem;
+  margin-bottom: 0.9rem;
 }
 
 h3 {
-  font-size: 1.4em;
-  margin: 1.5em 0em 0.8em;
+  font-size: 1.4rem;
+  margin-top: 2.1rem;
 }
 
 p {
-  margin: 0em 0em 0.8em;
 }
 
 pre {
   font-size: 0.8em;
-  margin: 0em 8px 1.3em;
-}
-
-h2, h3, p {
-  padding: 0px 8px 0px;
-}
-
-@mixin section {
-  max-width: $width;
-  margin: $margin * 1.5 auto; // auto 는 IE9 이상부터
-  @include narrow {
-    margin: $margin * 1.7 auto;
-  }
-  /*
-  @include normal {
-    margin: $margin * 1.9 auto;
-  }
-  */
-  /*@include wide {
-    margin: $margin * 2.1 auto;
-  }*/
-  text-align: center;
-}
-
-.section {
-  @include section;
-}
-
-@mixin sub-section {
-  margin: $margin auto;
-  @include narrow {
-    margin: $margin * 1.1 auto;
-  }
-  @include normal {
-    margin: $margin * 1.2 auto;
-  }
-  @include wide {
-    margin: $margin * 1.3 auto;
-  }
-}
-
-.sub-section {
-  @include sub-section;
-}
-
-.mini-section {
-  margin: $margin * 0.8 auto;
+  margin-top: 1.3em;
+  margin-bottom: 1.3em;
 }
 
 pre.clean {
-  margin: $margin auto;
   padding: 0px;
   border: 0px;
   background-color: inherit;
@@ -129,81 +97,80 @@ pre.clean {
 }
 
 hr {
-  margin: 0px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-// home
-
-.page-header { // bootstrap 에 같은 이름 클래스가 정의되어 있다;
-  @include ac-link;
-  margin-top: 0px;
-  padding: 0px; // overriding bootstrap
-  border-bottom: 1px solid $line-color;
-  //border-bottom: 0px;
-}
-
-.page-footer {
-  @include ac-link;
-  padding: 0px; // overriding bootstrap
-  border-top: 1px solid $line-color;
-  //border-top: 0px;
-  .about-list {
-    margin: 0.3em auto;
-    ul {
-      margin: 0px;
-      li {
-        padding: 0 5px;
-        padding: 0 5px;
-      }
-    }
+ul {
+  list-style: none;
+  padding: 0px;
+  li {
+    margin-bottom: 0.3em;
   }
 }
 
-.page-header-site-name {
-  margin: 0.6em auto;
+.vspace {
+  margin-bottom: $margin;
+}
+
+// page
+
+.page-header { // bootstrap 에 같은 이름 클래스가 정의되어 있다;
+  max-width: $width;
+  margin: 0px auto $layout-margin;
+  padding: 0px; // overriding bootstrap
+  border-bottom: 1px solid $line-color;
+  @include ac-link;
+}
+
+.page-footer {
+  max-width: $width;
+  margin: $layout-margin auto;
+  padding: 0px; // overriding bootstrap
+  border-top: 1px solid $line-color;
+  ul {
+    margin: 0.3rem auto;
+    padding: 0px;
+    list-style: none;
+    li {
+      display: inline-block;
+      margin-bottom: 0px;
+      padding: 0 5px;
+    }
+  }
+  @include ac-link;
+}
+
+.page-header > .site-name, .page-footer > .site-name {
   font-size: 1.5em;
+  margin: 0.6em auto;
   a:hover {
     text-decoration: none;
   }
 }
 
 .page-title {
-  @include section;
-  @include ac-link;
-  a:hover {
-    text-decoration: none;
-  }
-  h1 {
-    font-size: 2.5em;
-  }
+  max-width: $width;
+  margin: $layout-margin auto;
 }
-
-.top-links {
-  a {
-    padding-left:8px;
-    padding-right:8px;
-  }
-}
-
-// page content
 
 .page-content {
+  max-width: $width; // 와이드 이미지는 없다고 가정했다. 이미지가 들어가는 사이트는 섹션별로 폭을 설정해야.
+  margin: $layout-margin auto;
   text-align: left;
   p.go-to-index {
     text-align: center;
-    font-size: 1.5em;
-    margin: 4em 0em;
+    font-size: 1.3rem;
+    margin: $layout-margin auto;
   }
 }
 
 .page-content-index {
   text-align: center;
   ul {
-    list-style: none;
-    margin: 0em 0.5em 3em;
-    padding-left: 0px;
     li {
-      margin-bottom: 1.8em;
+      font-size: 1.1em;
+      margin-bottom: 1em;
     }
   }
 }

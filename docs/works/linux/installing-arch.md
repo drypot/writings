@@ -652,3 +652,16 @@ iptables 가 비활성화 (Active: inactive) 상태인 것을 확인한다. ufw 
 
 smtp 는 열지 않아도 메일 발송에 문제가 없다.
 
+## lm_sensors
+
+온도 모니터링 모듈 설치.
+
+    # pacman -S lm_sensors
+
+설정. 모르면 Enter 친다.
+
+    # sensors-detect
+
+온도 덤프.
+
+    # sensors

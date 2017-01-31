@@ -90,6 +90,12 @@ C, make 등 기본 컴파일 도구 설치
 
     ...
 
+## certbot
+
+Let's Encrypt 클라이언트 설치.
+
+    # pacman -S certbot
+    
 
 ## MonogoDB
 

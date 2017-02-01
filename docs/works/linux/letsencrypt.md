@@ -2,6 +2,8 @@
 title: Simple Let's Encrypt
 ---
 
+Last Update: 2017.02.02
+
 <https://letsencrypt.org>{:target="_blank"}
 
 <https://wiki.archlinux.org/index.php/Let’s_Encrypt>{:target="_blank"}

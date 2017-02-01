@@ -644,7 +644,7 @@ iptables 가 비활성화 (Active: inactive) 상태인 것을 확인한다. ufw 
 
     # ufw enable
 
-    # ufw limit ssh <-- 30 초 동안 6 회이상 접속 시도하면 IP 밴.
+    # ufw allow ssh 
     # ufw allow http <-- udp 로 http 보내는 스팩이 있으니 tcp 로 제한하진 말자;
     # ufw allow https
 

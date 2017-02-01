@@ -195,12 +195,12 @@ mdadm 을 데몬으로 띄워서 레이드 상태를 모니터링 하는 기능�
 /etc/mdadm.conf 파일의 MAILADDR 필드를 수정한다.
 
 postfix / ssmtp / msmtp 중에 하나를 설치해 둔다. 메일 보내는 서비스.
-아치 위키에 dma 가 몇 줄 언급되어 있다. 좋다는 건가 문제가 있다는 건가.
+아치 위키에 dma 가 몇 줄 언급되어 있는데 메일을 시스템 외부로는 못 보낸다니 패스.
 
 우분투에서 mdadm 패키지를 설치하면 init.d 스크립트 통해서 모니터가 자동으로 뜨게 되어 있다.
 현재 우분투 머신이 없어서 자세한 내용은 생략.
 
-아치도 마찬가지로 mdadm.service 가 systemd 에 등록되어 있다.
+아치도 마찬가지로 mdmonitor.service 가 systemd 에 등록되어 있다.
 disabled 되어 있으면 가동.
 
     $ systemctl status mdmonitor.service

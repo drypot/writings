@@ -95,7 +95,68 @@ C, make 등 기본 컴파일 도구 설치
 Let's Encrypt 클라이언트 설치.
 
     # pacman -S certbot
+
+acme 챌린지 디렉토리 생성
+
+    # mkdir -p /var/lib/letsencrypt/.well-known
+    # chgrp http /var/lib/letsencrypt
+    # chmod g+s /var/lib/letsencrypt
     
+certbot 이 동작할 수 있게 nginx default server 설정을 한다.
+
+    server {
+      listen 80 default_server;
+      server_name _;
+        
+      location ^~ /.well-known {
+        allow all;
+        alias /var/lib/letsencrypt/.well-known/;
+        default_type "text/plain";
+        try_files $uri =404;
+      }
+
+      location / {
+        return 301 https://$host$request_uri;
+      }
+    }
+
+certbot 으로 인증서를 받아 심는다.
+
+    certbot certonly --email drypot@gmail.com --webroot -w /var/lib/letsencrypt/ -d raysoda.com -d www.raysoda.com -d file.raysoda.com
+
+nginx 사이트들의 ssl 설정을 마무리한다.
+
+인증서 업데이트 자동화 1 단계.
+
+    /etc/systemd/system/certbot.service
+
+    [Unit]
+    Description=Let's Encrypt renewal
+
+    [Service]
+    Type=oneshot
+    ExecStart=/usr/bin/certbot renew --quiet --agree-tos
+    ExecStartPost=/bin/systemctl reload nginx.service
+
+인증서 업데이트 자동화 2 단계.
+
+    /etc/systemd/system/certbot.timer
+
+    [Unit]
+    Description=Daily renewal of Let's Encrypt's certificates
+
+    [Timer]
+    OnCalendar=daily
+    RandomizedDelaySec=1day
+    Persistent=true
+
+    [Install]
+    WantedBy=timers.target
+
+스타트.
+
+    # systemctl enable certbot.timer
+    # systemctl start certbot.timer
 
 ## MonogoDB
 

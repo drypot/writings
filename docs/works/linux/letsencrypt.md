@@ -58,7 +58,7 @@ nginx 서버가 이미 여러 서비스를 돌리고 있는 상황을 가정합�
 
 ## 공용 /.well-known 폴더 생성
 
-다름 명령으로 적당한 위치에 공용 .well-known 을 만듭니다. Arch 환경 기준입니다.
+다음 명령으로 적당한 위치에 공용 .well-known 을 만듭니다. Arch 환경 기준입니다.
 
     # mkdir -p /var/lib/letsencrypt/.well-known
     # chgrp http /var/lib/letsencrypt
@@ -71,7 +71,7 @@ g+s: 이 디렉토리에 생성되는 하위 파일들은 디렉토리의 그룹
 
 서비스 중인 모든 웹사이트가 https 사용하고 있다면
 80 포트는 다음과 같은 기본 서버 설정으로 사용하고 계셨을 겁니다.
-전 사이트 https 쓰고 계셨죠???
+모든 사이트 https 쓰고 계셨죠???
 
     server {
         listen 80 default_server;
@@ -79,7 +79,7 @@ g+s: 이 디렉토리에 생성되는 하위 파일들은 디렉토리의 그룹
         return 301 https://$host$request_uri;
     }
 
-위 설정은 이 기계로 들어오는 모든 http 요청을 https 로 리다이렉트하는 겁니다. 영원히;
+위 설정은 이 기계로 들어오는 모든 http 요청을 https 로 리다이렉트하는 겁니다. 영원히(301);
 
 LE 는 80 포트로 .well-known 을 찾기 때문에 아래와 같이 기본 사이트에 .well-known 을 링크해 두면
 앞으로 .well-known 설정을 반복할 필요가 없어집니다.
@@ -116,7 +116,7 @@ certbot 으로 인증서를 받는 굉장히 다양한 방법들이 있는데 �
 
     certbot certonly --email drypot@gmail.com --webroot -w /var/lib/letsencrypt/ -d raysoda.com -d www.raysoda.com -d file.raysoda.com
 
---webroot 로 certbot 이 받아쓰기할 곳을 알려줍니다. 우리의 공용 .well-known 웹루트입니다.
+--webroot 는 certbot 이 받아쓰기할 곳을 -w 로 직접 적겠다는 겁니다. 우리의 공용 .well-known 웹루트입니다.
 
 -d 는 인증서에 한꺼번에 담을 도메인 이름들입니다.
 관련된 도메인들은 한꺼번에 담고 전혀 관련 없는 그룹은 certbot 명령을 여러번 실행하면 됩니다.
@@ -128,6 +128,7 @@ certbot 으로 인증서를 받는 굉장히 다양한 방법들이 있는데 �
 ## nginx ssl 사이트 설정
 
 ssl 설정중 꽤 많은 양이 중복되므로 인크루드할 파일을 하나 만듭니다. 제 경우는 /data/nginx/ssl.inc 로 생성.
+
 자세한 의미는 저도 모릅니다. 하라는 대로; 좋은 게 좋은 거;
 
     /data/nginx/ssl.inc
@@ -170,18 +171,23 @@ ssl 설정중 꽤 많은 양이 중복되므로 인크루드할 파일을 하나
       ...
     }
 
-여러분이 신이 아니라면 설정 파일 신텍스가 다 맞는지 한번 검사.
+여러분이 신이 아니라면 설정 파일 신텍스가 다 맞는지 한번 검사해 봅니다.
 
     # nginx -c /etc/nginx/nginx.conf -t
 
-nginx 재기동.
+오류 없으면 nginx 재기동.
 
     # systemctl reload nginx
 
-여기까지 하면 https 로 사이트에 접속할 수 있습니다.
+여기까지 하면 https 로 사이트에 접속할 수 있어야 합니다.
 
 ## 인증서 갱신
 
+인증서가 업데이트 하는 모습을 테스트로 구경해 봅니다. 실제로 업데이트 되지는 않습니다.
+
+    certbot renew --dry-run 
+
+위 테스트가 잘 되었으면 systemd 서비스로 등록합니다.
 환경마다 서비스 관리하는 법이 다를 것인데 아래는 systemd 기준입니다.
 
 인증서 업데이트 자동화 1 단계.
@@ -217,3 +223,8 @@ nginx 재기동.
     # systemctl start certbot.timer
 
 별 문제가 없다면 이제 인증서는 3 개월 마다 영원히 자동 업데이트됩니다.
+
+
+## 미래엔
+
+더 간단한 방법이 나오리라 믿습니다;

@@ -39,7 +39,7 @@ $margin: 3rem;
 // base
 
 html {
-  font-size: 16px;
+  font-size: 14px;
   @include narrow {
     font-size: 16px;
   }
@@ -151,6 +151,11 @@ ul {
 .page-title {
   max-width: $width;
   margin: $layout-margin auto;
+  h1 {
+    font-size: 1.9em;
+    white-space: pre-line;
+    line-height: 180%;
+  }
 }
 
 .page-content {
@@ -161,6 +166,14 @@ ul {
     text-align: center;
     font-size: 1.3rem;
     margin: $layout-margin auto;
+  }
+}
+
+.page-content-center {
+  text-align: center;
+  p {
+    white-space: pre-line;
+    margin-bottom: 1.8em;
   }
 }
 

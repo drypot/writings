@@ -30,7 +30,7 @@ OS 가 깨끗한 환경에 새로 포크했다면 이 리포지터리를 포크�
 
     bundle exec jekyll serve
 
-지킬 실행 오류나면, 지킬 사이트 새로 만들어서 GemFile, GemFile.lock 복사해 온다.
+지킬 실행 오류나면, 지킬 사이트 새로 만들어서 Gemfile, Gemfile.lock 복사해 온다.
 
     jekyll new "tmp_site"
 

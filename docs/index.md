@@ -13,3 +13,7 @@ class: page-content-index
 - [Programming in Scala](works/scala-prog)
 - [Java Spring](works/java-spring)
 - [Java Hibernate](works/java-hibernate)
+
+*
+
+- [금강경](works/buddhism/geum-gang-gyeong)

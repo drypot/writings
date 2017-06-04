@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: Writings
 email: drypot@gmail.com
-description: Some Technical Writings for Software Development
+description: Drypot's Writings.
 url: "https://drypot.github.io" # the base hostname & protocol for your site
 baseurl: "/writings" # the subpath of your site, e.g. /blog
 port: 4001

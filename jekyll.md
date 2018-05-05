@@ -8,25 +8,35 @@ OS 가 깨끗한 환경에 새로 포크했다면 이 리포지터리를 포크�
 
     brew install ruby
 
-번들러 설치.
+지킬과 번들러 설치.
 
-    gem install bundler
+    gem install jekyll bundler
+
+
+# 새로운 지킬 디렉토리 생성
+
+추후 추가...;
+
+
+# 기존 지킬 디렉토리 활성화
 
 번들러로 젬 설치.
 
     cd docs
     bundle install
 
-초기 설치 대신 젬 업데이트 하려면,
+초기 설치 대신 젬 업데이트만 하려면,
 
     bundle update
 
-지킬 실행법 1, 루트로 돌아와서,
 
-    cd ..
+# 지킬 실행
+
+실행법 1, 루트에서,
+
     bin/jekyll-run
 
-지킬 실행법 1, docs 에서 그냥,
+실행법 2, docs 에서 그냥,
 
     bundle exec jekyll serve
 

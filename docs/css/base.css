@@ -1,0 +1,167 @@
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1400px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+body {
+  font-size: 1rem;
+  font-family: serif;
+  line-height: 160%;
+  color: #333;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+h1, h2, h3, p, pre, hr, ul {
+  margin: 0.8rem 8px;
+}
+
+h1, h2, h3 {
+  word-break: keep-all;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-top: 3rem;
+  margin-bottom: 0.9rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-top: 2.1rem;
+}
+
+pre {
+  font-size: 0.8em;
+  margin-bottom: 1rem;
+}
+
+pre.clean {
+  padding: 0px;
+  border: 0px;
+  background-color: inherit;
+  font-size: inherit;
+}
+
+hr {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+}
+ul li {
+  margin-bottom: 0.3em;
+}
+
+.vspace {
+  margin-bottom: 3rem;
+}
+
+.page-header {
+  max-width: 720px;
+  margin: 0px auto 5rem;
+  padding: 0px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.page-header a {
+  color: #333;
+}
+
+.page-footer {
+  max-width: 720px;
+  margin: 5rem auto;
+  padding: 0px;
+  border-top: 1px solid #e6e6e6;
+}
+.page-footer ul {
+  margin: 0.3rem auto;
+  padding: 0px;
+  list-style: none;
+}
+.page-footer ul li {
+  display: inline-block;
+  margin-bottom: 0px;
+  padding: 0 5px;
+}
+.page-footer a {
+  color: #333;
+}
+
+.page-header > .site-name,
+.page-footer > .site-name {
+  font-size: 1.5em;
+  margin: 0.6em auto;
+}
+.page-header > .site-name a:hover,
+.page-footer > .site-name a:hover {
+  text-decoration: none;
+}
+
+.page-title {
+  max-width: 720px;
+  margin: 5rem auto;
+}
+.page-title h1 {
+  font-size: 1.9em;
+  white-space: pre-line;
+  line-height: 180%;
+}
+
+.page-content {
+  max-width: 720px;
+  margin: 5rem auto;
+  text-align: left;
+}
+.page-content p.go-to-index {
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 5rem auto;
+  line-height: 350%;
+}
+.page-content p.go-to-index a {
+  display: block;
+}
+
+.page-content-center {
+  text-align: center;
+}
+.page-content-center p {
+  white-space: pre-line;
+  margin-bottom: 1.8em;
+}
+
+.page-content-index {
+  text-align: center;
+}
+.page-content-index ul {
+  margin-bottom: 4.5rem;
+}
+.page-content-index ul li {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+}
+
+/*# sourceMappingURL=base.css.map */

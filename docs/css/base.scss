@@ -1,5 +1,3 @@
----
----
 
 // macro
 
@@ -57,10 +55,15 @@ body {
   line-height: 160%;
   color: $color;
   text-align: center;
+  word-wrap: break-word;
 }
 
 h1, h2, h3, p, pre, hr, ul {
   margin: 0.8rem $side-space;
+}
+
+h1, h2, h3 {
+  word-break: keep-all;
 }
 
 h1 {
@@ -140,7 +143,8 @@ ul {
   @include ac-link;
 }
 
-.page-header > .site-name, .page-footer > .site-name {
+.page-header > .site-name,
+.page-footer > .site-name {
   font-size: 1.5em;
   margin: 0.6em auto;
   a:hover {
@@ -159,7 +163,9 @@ ul {
 }
 
 .page-content {
-  max-width: $width; // 와이드 이미지는 없다고 가정했다. 이미지가 들어가는 사이트는 섹션별로 폭을 설정해야.
+  max-width: $width;
+  // 와이드 이미지는 없다고 가정했다.
+  // 이미지가 들어가는 사이트는 섹션별로 폭을 설정해야.
   margin: $layout-margin auto;
   text-align: left;
   p.go-to-index {
@@ -167,6 +173,9 @@ ul {
     font-size: 1.3rem;
     margin: $layout-margin auto;
     line-height: 350%;
+    a {
+      display:block;
+    }
   }
 }
 

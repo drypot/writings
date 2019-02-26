@@ -3,27 +3,29 @@ html
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(name='description', content='Drypot's Writings.')
+    meta(name='description', content='Drypot\'s Writings.')
     meta(property='og:site_name', content='Writings')
-    block head-title
 
-    link(rel='stylesheet', href='{{ site.baseurl }}/lib/bootstrap.min.css')
-    link(rel='stylesheet', href='{{ site.baseurl }}/css/base.css')
-    script(src='{{ site.baseurl }}/lib/jquery.min.js')
-    script(src='{{ site.baseurl }}/lib/bootstrap.min.js')
+    block head-title
+      title Writings of Drypot
+
+    link(rel='stylesheet', href='/writings/lib/bootstrap.min.css')
+    link(rel='stylesheet', href='/writings/css/base.css')
+    script(src='/writings/lib/jquery.min.js')
+    script(src='/writings/lib/bootstrap.min.js')
+
   body
-    | {% if page.url != '/' %}
-    .page-header
-      .site-name
-        a(href='{{ site.baseurl }}/') Writings
-    |     {% endif %}
-    .page-title
-      h1 {{ page.title }}
-    .page-content(class='{{ page.class }}')
-      | {{ content }}
+    block page-header
+      .page-header
+        .site-name
+          a(href='/writings/') Writings of Drypot
+
+    block content
+
     .page-footer
       ul
         li
-          a(href='https://github.com/drypot/writings', target='_blank') View on GitHub
+          a(href='https://github.com/drypot/writings/', target='_blank') View on GitHub
       .site-name
-        a(href='{{ site.baseurl }}/') Writings
+        a(href='/writings/') Writings of Drypot
+
